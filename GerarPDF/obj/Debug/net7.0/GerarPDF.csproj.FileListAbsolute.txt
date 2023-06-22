@@ -1,0 +1,77 @@
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\GerarPDF.exe
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\GerarPDF.deps.json
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\GerarPDF.runtimeconfig.json
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\GerarPDF.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\GerarPDF.pdb
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.barcodes.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.bouncy-castle-connector.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.forms.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.io.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.kernel.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.layout.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.pdfa.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.sign.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.styledxmlparser.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.svg.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.commons.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\GerarPDF.csproj.AssemblyReference.cache
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\GerarPDF.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\GerarPDF.AssemblyInfoInputs.cache
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\GerarPDF.AssemblyInfo.cs
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\GerarPDF.csproj.CoreCompileInputs.cache
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\GerarPDF.csproj.CopyComplete
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\GerarPDF.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\refint\GerarPDF.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\GerarPDF.pdb
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\GerarPDF.genruntimeconfig.cache
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\obj\Debug\net7.0\ref\GerarPDF.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\itext.bouncy-castle-adapter.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA HEAVY FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTUR.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA BOLD FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA BOLD ITALIC FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA BOOK FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA BOOK ITALIC FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA EXTRA BLACK FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA HEAVY ITALIC FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA LIGHT BT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA LIGHT FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA LIGHT ITALIC FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA MEDIUM BT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA MEDIUM CONDENSED BT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA MEDIUM ITALIC FONT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FUTURA-CONDENSEDLIGHT.OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAM-BLACK.OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAM-BOLD (1).OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAM-BOLD.OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAM-BOOKITALIC.OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAM-THIN.OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAM-THINITALIC.OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAM-ULTRAITALIC.OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAM-XLIGHT.OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAM-XLIGHTITALIC.OTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMBOLDITALIC (1).TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMBOLDITALIC.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMBOOK (1).TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMBOOK.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMLIGHT (1).TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMLIGHT.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMLIGHTITALIC (1).TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMLIGHTITALIC.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMMEDIUM (1).TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\GOTHAMMEDIUM.TTF
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FutuBk.ttf
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FutuBkIt.ttf
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FuturaBookBT.ttf
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\FuturaBookItalicBT.ttf
+C:\Users\it01.maf\Desktop\Stefan\Testes\GerarPDF\GerarPDF\bin\Debug\net7.0\Fonts\Futura_20Medium_20BT.ttf
