@@ -115,9 +115,9 @@ namespace GerarPDF
 
 
             // ############################################# IMAGEM ##########################################################
-            string imagePaths = "https://mm.mafirol.info/Categories/Subfamilies/20230427084848996_d088e2aa-01e4-43e5-bbfe-2822e06e2911.png"; // Altere para a URL da imagem ou caminho local
+            //string imagePaths = "https://mm.mafirol.info/Categories/Subfamilies/20230427084848996_d088e2aa-01e4-43e5-bbfe-2822e06e2911.png"; // Altere para a URL da imagem ou caminho local
             //string imagePaths = "https://mm.mafirol.info/Categories/Subfamilies/20230609074430920_5ccc7720-0ec9-44e2-9cca-deef438064bb.png"; // Altere para a URL da imagem ou caminho local
-            //string imagePaths = "https://mm.mafirol.info/Categories/Subfamilies/20230607152016175_ef9729b0-fd42-4173-9e2d-0ce8bd29ac4e.png"; // Altere para a URL da imagem ou caminho local
+            string imagePaths = "https://mm.mafirol.info/Categories/Subfamilies/20230607152016175_ef9729b0-fd42-4173-9e2d-0ce8bd29ac4e.png"; // Altere para a URL da imagem ou caminho local
             ImageData imageDatas = ImageDataFactory.Create(imagePaths);
             Image images = new Image(imageDatas);
 
@@ -495,49 +495,106 @@ namespace GerarPDF
 
             // Cria um objeto de imagem
             string imagePathr = "https://mm.mafirol.info/Categories/Variants/Profile/20230524135250806_92d9f97f-c500-483d-a744-f5a757ef9295.png"; // Altere para a URL da imagem ou caminho local
+            //string imagePathr = "https://mm.mafirol.info/Categories/Variants/Profile/20230309113554775_553e1c22-3eca-4a47-84ee-d5782b80c048.png";
+            //string imagePathr = "https://mm.mafirol.info/Categories/Variants/Profile/20230508134640521_0d9ae880-59f2-4fe5-ab8c-ce9193f9bf0d.png";
             ImageData imageDatar = ImageDataFactory.Create(imagePathr);
             Image imager = new Image(imageDatar);
 
             // Você pode alterar a escala da imagem de acordo com suas necessidades
-            imager.ScaleAbsolute(410, 310);
+            imager.ScaleAbsolute(490, 390);
             
             // Defina a posição da imagem (x, y) no documento         
-            imager.SetFixedPosition(2, 110, 150);
+            imager.SetRelativePosition(40, -70, 40, 800);
             document.Add(imager);
 
+            Paragraph body6 = new Paragraph("INFORMAÇÃO TÉCNICA")
+              .SetWidth(70)
+              .SetWidth(UnitValue.CreatePercentValue(w))
+              .SetHorizontalAlignment(HorizontalAlignment.CENTER)
+              .SetRelativePosition(1, 0, 30, 110)
+              .SetTextAlignment(TextAlignment.CENTER)
+              .SetFontSize(16)
+              .SetMarginLeft(ml)
+              .SetMarginTop(0)
+             .SetFont(font1)
+             .SetFontColor(customColor1);
+            document.Add(body6);
+
+            //-------------- linha separadora--
+            Div div06 = new Div();
+            div06.SetWidth(UnitValue.CreatePercentValue(43));  // 50% da largura total
+            div06.SetBorderBottom(new SolidBorder(0.5f));
+            div06.SetMarginBottom(5);  // espaço abaixo da linha
+            div06.SetMarginLeft(0);
+            div06.SetRelativePosition(1, -114, 30, 5);
+            div06.SetHorizontalAlignment(HorizontalAlignment.CENTER);  // Centraliza a Div
+            document.Add(div06);
+            //--------
 
             //##################################################################### ------------------------- ##################################################################################
             //-------------------------------- FOOTER ------------------------------------
 
+            PdfFont fontBold = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+
+            Paragraph TitleFooter = new Paragraph("Condições de operação recomendadas:")
+             .SetFontSize(7)
+             .SetFont(fontBold)
+             .SetMarginLeft(38)
+             .SetHorizontalAlignment(HorizontalAlignment.CENTER)
+             .SetWidth(UnitValue.CreatePercentValue(50))
+             .SetRelativePosition(60, 130, 40, 100)
+             //.SetFontFamily() .SetTextAlignment(TextAlignment.CENTER)
+             .SetFontColor(ColorConstants.BLACK);
+            document.Add(TitleFooter);
+
             Paragraph paragraphFooter3 = new Paragraph("Este equipamento foi projetado para operar" +
                 " num ambiente interior onde a temperatura e a humidade relativa não exceda 25ºC e 60%Hr (classe climática 3).\r\nNão instalar sob a luz solar direta ou sobre influência de corrente de ar.")
-               .SetFontSize(6)
-               
+               .SetFontSize(7)
+               //.SetMarginLeft(10)
                .SetHorizontalAlignment(HorizontalAlignment.CENTER)
-               .SetWidth(UnitValue.CreatePercentValue(100))
+               .SetWidth(UnitValue.CreatePercentValue(50))
                .SetTextAlignment(TextAlignment.CENTER)
-               .SetRelativePosition(1, 580, 30, 80)
+               .SetFixedPosition(2, -150, 70, 900)
                .SetFontColor(ColorConstants.BLACK);
             document.Add(paragraphFooter3);
 
+
             Paragraph paragraphFooter2 = new Paragraph("Especificações sujeitas a alterações sem aviso prévio. Documento não contratual.")
-               .SetFontSize(6)
+               .SetFontSize(7)
                .SetMarginLeft(38)
-               .SetHorizontalAlignment(HorizontalAlignment.CENTER)
+               .SetHorizontalAlignment(HorizontalAlignment.CENTER) //----------------------------------------------------------------------------------------------
                .SetWidth(UnitValue.CreatePercentValue(50))
-               .SetRelativePosition(1, 585, 30, 80)
+               .SetFixedPosition(2, 175, 50, 900)
                .SetFontColor(ColorConstants.BLACK);
             document.Add(paragraphFooter2);
 
-            string imagePath02 = "https://mm.mafirol.info/assinaturas/logo.png";
+
+            //##################################### IMAGEM 1 FOOTERS ############################################################
+
+            string imagePath02 = "C:\\Users\\it01.maf\\Downloads\\Mafirol_mir.png";
             ImageData imageDatar02 = ImageDataFactory.Create(imagePath02);
             Image img02 = new Image(imageDatar02);
 
-            img02.ScaleAbsolute(85, 25);  // ajuste esses valores conforme necessário
-            img02.SetRelativePosition(1, 580, 30, 100);
+            img02.ScaleAbsolute(40, 40);  // ajuste esses valores conforme necessário
+            img02.SetFixedPosition(2, 240, 2, 1200);
+            //img02.SetRelativePosition(1, 580, 50, 100);
 
             Paragraph footer02 = new Paragraph().Add(img02).SetTextAlignment(TextAlignment.CENTER);
             document.Add(footer02);
+
+
+            //##################################### IMAGEM 2 FOOTERS ############################################################
+
+            string imagePath03 = "C:\\Users\\it01.maf\\Downloads\\WWW.png";
+            ImageData imageDatar03 = ImageDataFactory.Create(imagePath03);
+            Image img03 = new Image(imageDatar03);
+
+            img03.ScaleAbsolute(150, 90);  // ajuste esses valores conforme necessário
+            img03.SetFixedPosition(2, 290, 2, 1200);
+            //img02.SetRelativePosition(1, 580, 50, 100);
+
+            Paragraph footer03 = new Paragraph().Add(img03).SetTextAlignment(TextAlignment.CENTER);
+            document.Add(footer03);
 
             document.Close();
 
