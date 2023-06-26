@@ -17,6 +17,7 @@ using iText.IO.Font.Constants;
 using System.Runtime.ConstrainedExecution;
 using iText.IO.Font.Otf;
 using System.Reflection.Emit;
+using System.Runtime.Intrinsics.X86;
 
 namespace GerarPDF
 {
@@ -540,7 +541,7 @@ namespace GerarPDF
             Image img08 = new Image(imageDatar08);
 
             img08.ScaleAbsolute(150, 90);  // ajuste esses valores conforme necessário
-            img08.SetFixedPosition(1, 290, 2, 1200);
+            img08.SetFixedPosition(1, 290, 7, 1200);
             //img02.SetRelativePosition(1, 580, 50, 100);
 
             Paragraph footer08 = new Paragraph().Add(img08).SetTextAlignment(TextAlignment.CENTER);
@@ -635,20 +636,83 @@ namespace GerarPDF
              .SetFixedPosition(2, 20, 330, 276);
             document.Add(para1);
 
+            //############# TABELA AO LADO DE CADA LABEL
+
             // Crie uma nova tabela com 4 colunas
             Table tables01 = new Table(4);
 
+            // Crie um objeto de cor para a cor da fonte
+            PdfFont fonts = PdfFontFactory.CreateFont();
+            Color fontColor = new DeviceRgb(255, 255, 255); // Branco
+            Color cellColor = new DeviceRgb(105, 105, 105); // Cinza Escuro
+
+            // Ajuste o tamanho e a cor das células
+            Cell cell1 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(5) // Ajuste o preenchimento da célula
+                .SetMargin(5)
+                .SetBorder(Border.NO_BORDER) // Remova a borda
+                .SetBackgroundColor(cellColor) // Ajuste a cor de fundo
+                .Add(new Paragraph("1250")
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor));
+
+             Cell cell2 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(5) // Ajuste o preenchimento da célula
+                 .SetMargin(5)
+                .SetBorder(Border.NO_BORDER) // Remova a borda
+                .SetBackgroundColor(cellColor) // Ajuste a cor de fundo
+                .SetFont(fonts)
+                  .SetFontSize(6)
+                .SetFontColor(fontColor)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .Add(new Paragraph("1875"));
+
+             Cell cell3 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(5) // Ajuste o preenchimento da célula
+                 .SetMargin(5)
+                .SetBorder(Border.NO_BORDER) // Remova a borda
+                .SetBackgroundColor(cellColor) // Ajuste a cor de fundo
+                .SetFont(fonts)
+                  .SetFontSize(6)
+                .SetFontColor(fontColor)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .Add(new Paragraph("2500"));
+
+            Cell cell4 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(5) // Ajuste o preenchimento da célula
+                .SetMargin(5)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetBackgroundColor(cellColor) // Ajuste a cor de fundo
+               .SetFont(fonts)
+                 .SetFontSize(6)
+               .SetFontColor(fontColor)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("3750"));
+
+
+
             // Adicione as células à linha
-            tables01.AddCell(new Cell().Add(new Paragraph("Cell 1")));
-            tables01.AddCell(new Cell().Add(new Paragraph("Cell 2")));
-            tables01.AddCell(new Cell().Add(new Paragraph("Cell 3")));
-            tables01.AddCell(new Cell().Add(new Paragraph("Cell 4")));
+            tables01.AddCell(cell1);
+            tables01.AddCell(cell2);
+            tables01.AddCell(cell3);
+            tables01.AddCell(cell4);
 
-            tables01.SetFixedPosition(2, 350, 330, 170);
 
-            // Adicione a tabela ao documento
+            tables01.SetFixedPosition(2, 326, 330, 120);
+           
             document.Add(tables01);
 
+            //###### Label 2
 
             Paragraph para2 = new Paragraph("Área total de exposição (TDA) (m2)")
                 .SetMarginRight(0).SetPaddingRight(0)
@@ -661,6 +725,77 @@ namespace GerarPDF
             .SetFixedPosition(2, 20, 315, 276);
             document.Add(para2);
 
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables02 = new Table(4);
+            Color fontColor02 = new DeviceRgb(0, 0, 0); // Preto
+            Color cellColor02 = new DeviceRgb(255, 255, 255); // Branco
+
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells01 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(5) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda             
+                .Add(new Paragraph("1.88")
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02));
+
+            Cell cells02 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(5) // Ajuste o preenchimento da célula
+                .SetMargin(5)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+                 .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("2.82"));
+
+            Cell cells03 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(5) // Ajuste o preenchimento da célula
+                .SetMargin(5)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+                 .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("3.76"));
+
+            Cell cells04 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(5) // Ajuste o preenchimento da célula
+                .SetMargin(5)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+                 .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("5.64"));
+
+
+
+            // Adicione as células à linha
+            tables02.AddCell(cells01);
+            tables02.AddCell(cells02);
+            tables02.AddCell(cells03);
+            tables02.AddCell(cells04);
+
+
+            tables02.SetFixedPosition(2, 325, 310, 120);
+
+            document.Add(tables02);
+
+
+
             Paragraph para3 = new Paragraph("Superfície de refrigerada (m 2)")
                 .SetMarginRight(0).SetPaddingRight(0)
                 .SetTextAlignment(TextAlignment.RIGHT)
@@ -671,6 +806,82 @@ namespace GerarPDF
                   .SetFont(font4)                 
             .SetFixedPosition(2, 20, 300, 276);
             document.Add(para3);
+
+
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables03 = new Table(4);
+            Color cellColor2 = new DeviceRgb(192, 192, 192); // Cinza Escuro
+
+
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells05 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(3) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda             
+                .SetBackgroundColor(cellColor2)
+                //.SetMargin(3)
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02)
+                .Add(new Paragraph("3.56"));
+
+            Cell cells06 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(3) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetBackgroundColor(cellColor2)
+               .SetFont(fonts)
+                .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("5.33"));
+
+            Cell cells07 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(3) // Ajuste o preenchimento da célula
+               .SetBackgroundColor(cellColor2)
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("7.11"));
+
+            Cell cells08 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(3) // Ajuste o preenchimento da célula
+               .SetBackgroundColor(cellColor2)
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("10.67"));
+
+
+
+            // Adicione as células à linha
+            tables03.AddCell(cells05);
+            tables03.AddCell(cells06);
+            tables03.AddCell(cells07);
+            tables03.AddCell(cells08);
+
+
+            tables03.SetFixedPosition(2, 325, 296, 120);
+
+            document.Add(tables03);
+
 
             Paragraph para4 = new Paragraph("Volume de exposição refrigerada (m3)")
                 .SetMarginRight(0).SetPaddingRight(0)
@@ -683,6 +894,75 @@ namespace GerarPDF
             .SetFixedPosition(2, 20, 285, 276);
             document.Add(para4);
 
+
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables04 = new Table(4);
+         
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells09 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(5) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda             
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02)
+                .Add(new Paragraph("282"));
+
+            Cell cells10 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(5) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda             
+               .SetFont(fonts)
+                .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("1173"));
+
+            Cell cells11 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(5) // Ajuste o preenchimento da célula               
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("1564"));
+
+            Cell cells12 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(5) // Ajuste o preenchimento da célula               
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("2346"));
+
+
+
+            // Adicione as células à linha
+            tables04.AddCell(cells09);
+            tables04.AddCell(cells10);
+            tables04.AddCell(cells11);
+            tables04.AddCell(cells12);
+
+
+            tables04.SetFixedPosition(2, 325, 280, 120);
+
+            document.Add(tables04);
+
+
             Paragraph para5 = new Paragraph("Comprimento total com laterais (mm)")
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.RIGHT)
@@ -691,8 +971,84 @@ namespace GerarPDF
                   .SetMarginLeft(40) 
                   .SetMarginBottom(20)
                   .SetFont(font4)
-            .SetFixedPosition(2, 20, 270, 276);
+            .SetFixedPosition(2, 20, 266, 276);
             document.Add(para5);
+
+
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables05 = new Table(4);          
+
+
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells011 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(3) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda             
+                .SetBackgroundColor(cellColor2)
+                //.SetMargin(3)
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02)
+                .Add(new Paragraph("3.56"));
+
+            Cell cell12 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(3) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetBackgroundColor(cellColor2)
+               .SetFont(fonts)
+                .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("5.33"));
+
+            Cell cells13 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(3) // Ajuste o preenchimento da célula
+               .SetBackgroundColor(cellColor2)
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("7.11"));
+
+            Cell cells14 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(3) // Ajuste o preenchimento da célula
+               .SetBackgroundColor(cellColor2)
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("10.67"));
+
+
+
+            // Adicione as células à linha
+            tables05.AddCell(cells011);
+            tables05.AddCell(cell12);
+            tables05.AddCell(cells13);
+            tables05.AddCell(cells14);
+
+
+            tables05.SetFixedPosition(2, 325, 265, 120);
+
+            document.Add(tables05);
+
+
 
             Paragraph para6 = new Paragraph("Tensão/Frequência")
                  .SetMarginRight(0).SetPaddingRight(0)
@@ -702,8 +1058,40 @@ namespace GerarPDF
                   .SetMarginLeft(40)
                   .SetMarginBottom(5) 
                   .SetFont(font4)
-            .SetFixedPosition(2, 20, 250, 276);
+            .SetFixedPosition(2, 20, 242, 276);
             document.Add(para6);
+
+
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables06 = new Table(4);
+
+
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells015 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(112) // Ajuste a largura da célula
+                .SetPadding(3) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda             
+                .SetBackgroundColor(cellColor2)
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02)
+                .Add(new Paragraph("230V / 50Hz "));
+
+
+            // Adicione as células à linha
+            tables06.AddCell(cells015);
+           
+
+            tables06.SetFixedPosition(2, 325, 240, 200);
+
+            document.Add(tables06);
+
+
 
             Paragraph para7 = new Paragraph("Potência nominal (W)")
                  .SetMarginRight(0).SetPaddingRight(0)
@@ -713,8 +1101,79 @@ namespace GerarPDF
                   .SetMarginLeft(40) 
                   .SetMarginBottom(5)
                   .SetFont(font4)
-            .SetFixedPosition(2, 20, 235, 276);
+            .SetFixedPosition(2, 20, 228, 276);
             document.Add(para7);
+
+
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables07 = new Table(4);
+
+
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells016 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(4) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda      
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02)
+                .Add(new Paragraph("370"));
+
+            Cell cell17 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(4) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+                .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("440"));
+
+            Cell cells18 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(4) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("710"));
+
+            Cell cells19 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(4) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("740"));
+
+
+
+            // Adicione as células à linha
+            tables07.AddCell(cells016);
+            tables07.AddCell(cell17);
+            tables07.AddCell(cells18);
+            tables07.AddCell(cells19);
+
+
+            tables07.SetFixedPosition(2, 325, 225, 120);
+             
+            document.Add(tables07);
+
+
 
             Paragraph para8 = new Paragraph("Corrente nominal (A)")
                  .SetMarginRight(0).SetPaddingRight(0)
@@ -724,8 +1183,83 @@ namespace GerarPDF
                   .SetMarginLeft(40) 
                   .SetMarginBottom(5)
                   .SetFont(font4)
-            .SetFixedPosition(2, 20, 220, 276);
+            .SetFixedPosition(2, 20, 214, 276);
             document.Add(para8);
+
+
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables08 = new Table(4);
+
+
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells020 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(2) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda      
+                .SetBackgroundColor(cellColor2)
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02)
+                .Add(new Paragraph("1.7"));
+
+            Cell cell21 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBackgroundColor(cellColor2)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("2.1"));
+
+            Cell cells22 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBackgroundColor(cellColor2)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("3.2"));
+
+            Cell cells23 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBackgroundColor(cellColor2)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("3.7"));
+
+
+
+            // Adicione as células à linha
+            tables08.AddCell(cells020);
+            tables08.AddCell(cell21);
+            tables08.AddCell(cells22);
+            tables08.AddCell(cells23);
+
+
+            tables08.SetFixedPosition(2, 325, 214, 120);
+
+            document.Add(tables08);
+
+
 
             Paragraph para9 = new Paragraph("Iluminação (W)")
                  .SetMarginRight(0).SetPaddingRight(0)
@@ -735,8 +1269,79 @@ namespace GerarPDF
                   .SetMarginLeft(40) 
                   .SetMarginBottom(5) 
                   .SetFont(font4)
-            .SetFixedPosition(2, 20, 205, 276);
+            .SetFixedPosition(2, 20, 197, 276);
             document.Add(para9);
+
+
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables09 = new Table(4);
+
+
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells024 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(2) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda                   
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02)
+                .Add(new Paragraph("1 x 19"));
+
+            Cell cell25 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("1 x 22"));
+
+            Cell cells26 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("2 x 19"));
+
+            Cell cells27 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("3 x 19"));
+
+
+
+            // Adicione as células à linha
+            tables09.AddCell(cells024);
+            tables09.AddCell(cell25);
+            tables09.AddCell(cells26);
+            tables09.AddCell(cells27);
+
+
+            tables09.SetFixedPosition(2, 325, 197, 120);
+
+            document.Add(tables09);
+
+
 
             Paragraph para10 = new Paragraph("Consumo anual de energia (KWh/a)*")
                  .SetMarginRight(0).SetPaddingRight(0)
@@ -746,8 +1351,82 @@ namespace GerarPDF
                   .SetMarginLeft(40) 
                   .SetMarginBottom(5) 
                   .SetFont(font4)
-            .SetFixedPosition(2, 20, 190, 276);
+            .SetFixedPosition(2, 20, 180, 276);
             document.Add(para10);
+
+
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables10 = new Table(4);
+
+
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells029 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(2) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda                   
+                .SetBackgroundColor(cellColor2)
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02)
+                .Add(new Paragraph("2 874"));
+
+            Cell cell30 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetBackgroundColor(cellColor2)
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("3 553"));
+
+            Cell cells31 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBackgroundColor(cellColor2)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("5 084"));
+
+            Cell cells32 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBackgroundColor(cellColor2)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("5 794"));
+
+
+
+            // Adicione as células à linha
+            tables10.AddCell(cells029);
+            tables10.AddCell(cell30);
+            tables10.AddCell(cells31);
+            tables10.AddCell(cells32);
+
+
+            tables10.SetFixedPosition(2, 325, 180, 120);
+
+            document.Add(tables10);
+
 
             Paragraph para11 = new Paragraph("Classe eficiência energética")
                  .SetMarginRight(0).SetPaddingRight(0)
@@ -757,8 +1436,33 @@ namespace GerarPDF
                   .SetMarginLeft(40) 
                   .SetMarginBottom(5)
                   .SetFont(font4)
-            .SetFixedPosition(2, 20, 175, 276);
+            .SetFixedPosition(2, 20, 166, 276);
             document.Add(para11);
+
+
+            Table tables012 = new Table(4);
+
+            // Crie a imagem
+            ImageData imageData11 = ImageDataFactory.Create("https://mm.mafirol.info/Categories/Subfamilies/EnergyEfficiency/20220107172351808_f900b70d-817b-43aa-8b82-d9bb76a8606e.jpg");
+            Image image11 = new Image(imageData11);
+            image11.ScaleToFit(30, 30); // Ajuste o tamanho da imagem conforme necessário
+
+            // Ajuste o tamanho e a cor das células
+            Cell cellsImg = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(112) // Ajuste a largura da célula
+                .SetPadding(3) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda
+                .Add(image11); // Adicione a imagem à célula
+
+            // Adicione as células à linha
+            tables012.AddCell(cellsImg);
+
+            tables012.SetFixedPosition(2, 322, 152, 276);
+
+            document.Add(tables012);
+
+
 
             Paragraph para12 = new Paragraph("Resistência evaporação condensados (opcional)")
                  .SetMarginRight(0).SetPaddingRight(0)
@@ -768,10 +1472,92 @@ namespace GerarPDF
                  .SetMarginLeft(40) 
                  .SetMarginBottom(5) 
                  .SetFont(font4)
-           .SetFixedPosition(2, 20, 155, 276);
+           .SetFixedPosition(2, 20, 135, 276);
             document.Add(para12);
 
-            
+            Paragraph paraDetails12 = new Paragraph("*Para classe temperatura M1 (-1, +5ºC)")
+                 .SetMarginRight(0).SetPaddingRight(0)
+                 .SetTextAlignment(TextAlignment.LEFT)
+                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                 .SetFontSize(6)
+                 .SetMarginLeft(40)
+                 .SetMarginBottom(5)
+                 .SetFont(font4)
+           .SetFixedPosition(2, 325, 125, 180);
+            document.Add(paraDetails12);
+
+            //############# TABELA AO LADO DE CADA LABEL
+
+            // Crie uma nova tabela com 4 colunas
+            Table tables11 = new Table(4);
+
+
+
+            // Ajuste o tamanho e a cor das células
+            Cell cells037 = new Cell(1, 1)
+                .SetHeight(9) // Ajuste a altura da célula
+                .SetWidth(30) // Ajuste a largura da célula
+                .SetPadding(2) // Ajuste o preenchimento da célula
+                .SetBorder(Border.NO_BORDER) // Remova a borda                   
+                .SetBackgroundColor(cellColor2)
+                .SetFont(fonts)
+                .SetFontSize(6)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(fontColor02)
+                .Add(new Paragraph("1 x 270"));
+
+            Cell cell38 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetBackgroundColor(cellColor2)
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("2 x 270"));
+
+            Cell cells39 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBackgroundColor(cellColor2)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("2 x 270"));
+
+            Cell cells40 = new Cell(1, 1)
+               .SetHeight(9) // Ajuste a altura da célula
+               .SetWidth(30) // Ajuste a largura da célula
+               .SetPadding(2) // Ajuste o preenchimento da célula
+               .SetMargin(10)
+               .SetBackgroundColor(cellColor2)
+               .SetBorder(Border.NO_BORDER) // Remova a borda
+               .SetFont(fonts)
+               .SetFontSize(6)
+               .SetFontColor(fontColor02)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("3 x 270"));
+
+
+
+            // Adicione as células à linha
+            tables11.AddCell(cells037);
+            tables11.AddCell(cell38);
+            tables11.AddCell(cells39);
+            tables11.AddCell(cells40);
+
+
+            tables11.SetFixedPosition(2, 325, 135, 120);
+
+            document.Add(tables11);
+
 
 
 
