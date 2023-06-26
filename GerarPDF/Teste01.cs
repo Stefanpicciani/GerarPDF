@@ -73,7 +73,7 @@ namespace GerarPDF
     public class Teste01
     {
 
-        public async Task <IActionResult> Teste()
+        public MemoryStream Teste()
         {
             //#################### ELE ESCREVE NO DIRETÓRIO O PDF GERADO E ABRE APÓS ESCREVÊ-LO
 
@@ -90,19 +90,44 @@ namespace GerarPDF
 
             //#################### ELE ESCREVE NO DIRETÓRIO O PDF GERADO E ABRE APÓS ESCREVÊ-LO / Ao final está adaptado para emitir em memóeria e comentado a criar em diretório
 
-            var stream = new MemoryStream();
-            
-            var nameResult = Guid.NewGuid().ToString();
+            //var stream = new MemoryStream();
 
-            var name = "InfoMafirol_product_" + nameResult.Substring(0, 2) + ".pdf";
-           
+            //// Crie um documento intermediário
+            //PdfWriter tempWriter = new PdfWriter(new MemoryStream());
+            //PdfDocument tempPdf = new PdfDocument(tempWriter);
+            //Document tempDocument = new Document(tempPdf);
+            //tempDocument.SetMargins(5, 20, 0, 20);
 
-            PdfWriter writer = new PdfWriter(stream);
-            PdfDocument pdf = new PdfDocument(writer);
-            Document document = new Document(pdf, PageSize.A4);
-            document.SetMargins(5, 20, 0, 20);
 
-              
+
+            //var nameResult = Guid.NewGuid().ToString();
+
+            //var name = "InfoMafirol_product_" + nameResult.Substring(0, 2) + ".pdf";
+
+
+            //PdfWriter writer = new PdfWriter(stream);
+            //PdfDocument pdf = new PdfDocument(writer);
+            //Document document = new Document(pdf, PageSize.A4);
+            //document.SetMargins(5, 20, 0, 20);
+
+
+
+
+            //############################### BEGIN ##########################################
+
+
+            // Crie um novo objeto MemoryStream
+            MemoryStream ms = new MemoryStream();
+
+            // Crie um documento intermediário
+            PdfWriter tempWriter = new PdfWriter(new MemoryStream());
+            PdfDocument tempPdf = new PdfDocument(tempWriter);
+            Document tempDocument = new Document(tempPdf);
+
+
+
+
+
             //-------------------------------- COLOR ------------------------------------
 
             //// Defina uma cor personalizada
@@ -140,7 +165,7 @@ namespace GerarPDF
                 .SetFontColor(customColor)
                 .SetFont(font)
                 .SetFontSize(75);
-            document.Add(header);
+            tempDocument.Add(header);
 
             Paragraph subHeader1 = new Paragraph("MURAL REFRIGERADO COM PORTAS")
                .SetRelativePosition(5, 0, 40, 62)
@@ -151,7 +176,7 @@ namespace GerarPDF
                .SetTextAlignment(TextAlignment.RIGHT)
                .SetFont(font4)
                .SetFontSize(11);
-            document.Add(subHeader1);
+            tempDocument.Add(subHeader1);
 
 
 
@@ -163,7 +188,7 @@ namespace GerarPDF
                .SetFontColor(customColor3)
                .SetFont(font1)
                .SetFontSize(12);
-            document.Add(subHeader2);
+            tempDocument.Add(subHeader2);
 
 
             Div div1 = new Div();
@@ -173,7 +198,7 @@ namespace GerarPDF
             div1.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
             div1.SetRelativePosition(5, 0, 30, 69);
 
-            document.Add(div1);
+            tempDocument.Add(div1);
 
             //-------------------------------- BODY ------------------------------------
 
@@ -190,10 +215,10 @@ namespace GerarPDF
 
             // Você pode alterar a escala da imagem de acordo com suas necessidades
             images.ScaleAbsolute(410, 310);
-            // Defina a posição da imagem (x, y) no documento
+            // Defina a posição da imagem (x, y) no temptempDocumento
             images.SetFixedPosition(230, 400);
 
-            document.Add(images);
+            tempDocument.Add(images);
 
             //##################################################### BLOCO ABAIXO DA IMAGEM PRINCIPAL, DIVISÃO E TEXTO ########################################################################
 
@@ -206,7 +231,7 @@ namespace GerarPDF
                 .SetFixedPosition(350, 350, 200) // Usando SetFixedPosition
                 .SetFont(font1)
                 .SetFontColor(customColor1);
-            document.Add(body00);
+            tempDocument.Add(body00);
 
             //-------------- linha separadora--
             Div div00 = new Div();
@@ -215,7 +240,7 @@ namespace GerarPDF
             div00.SetMarginBottom(5);
             div00.SetFixedPosition(350, 350, 200);
             div00.SetHorizontalAlignment(HorizontalAlignment.RIGHT);
-            document.Add(div00);
+            tempDocument.Add(div00);
             //--------
 
             // Cria uma tabela com 4 colunas (ajuste conforme necessário)
@@ -262,9 +287,9 @@ namespace GerarPDF
                 count++;
             }
 
-            // Posiciona a tabela no documento
+            // Posiciona a tabela no tempDocumento
             table.SetFixedPosition(350, 200, 200);
-            document.Add(table);
+            tempDocument.Add(table);
 
 
             //##################################################### BLOCO 02 ABAIXO DA IMAGEM PRINCIPAL, DIVISÃO E TEXTO ########################################################################
@@ -277,7 +302,7 @@ namespace GerarPDF
                 .SetFixedPosition(350, 165, 200) // Usando SetFixedPosition
                 .SetFont(font1)
                 .SetFontColor(customColor1);
-            document.Add(body02);
+            tempDocument.Add(body02);
 
             //-------------- linha separadora--
             Div div001 = new Div();
@@ -286,7 +311,7 @@ namespace GerarPDF
             div001.SetMarginBottom(5);
             div001.SetFixedPosition(350, 165, 200);
             div001.SetHorizontalAlignment(HorizontalAlignment.RIGHT);
-            document.Add(div001);
+            tempDocument.Add(div001);
             //--------
 
             // Cria uma tabela com 4 colunas (ajuste conforme necessário)
@@ -332,9 +357,9 @@ namespace GerarPDF
                 counter++;
             }
 
-            // Posiciona a tabela no documento
+            // Posiciona a tabela no tempDocumento
             table02.SetFixedPosition(350, 65, 200);
-            document.Add(table02);
+            tempDocument.Add(table02);
 
             //##################################################### BLOCO 1 DO PARÁGRAFO , DIVISÃO E TEXTO ########################################################################
 
@@ -349,7 +374,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                 .SetFont(font1)
                 .SetFontColor(customColor1);
-            document.Add(body);
+            tempDocument.Add(body);
 
             //-------------- linha separadora--
 
@@ -360,7 +385,7 @@ namespace GerarPDF
             div.SetMarginLeft(0);
             div.SetRelativePosition(1, -50, 30, 5);
             div.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            document.Add(div);
+            tempDocument.Add(div);
             //--------
 
 
@@ -372,7 +397,7 @@ namespace GerarPDF
                 .SetRelativePosition(1, -50, 30, 60)
                  .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            document.Add(paragraph1);
+            tempDocument.Add(paragraph1);
 
 
 
@@ -389,7 +414,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                .SetFont(font1)
                .SetFontColor(customColor1);
-            document.Add(body2);
+            tempDocument.Add(body2);
 
             //-------------- linha separadora--
             Div div01 = new Div();
@@ -399,7 +424,7 @@ namespace GerarPDF
             div01.SetMarginLeft(0);
             div01.SetRelativePosition(1, -50, 30, 5);
             div01.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            document.Add(div01);
+            tempDocument.Add(div01);
             //--------
 
 
@@ -410,7 +435,7 @@ namespace GerarPDF
                 .SetRelativePosition(1, -50, 30, 60)
                 .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            document.Add(paragraph2);
+            tempDocument.Add(paragraph2);
 
             //##################################################### BLOCO 3 DO PARÁGRAFO , DIVISÃO E TEXTO ########################################################################
 
@@ -425,7 +450,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                .SetFont(font1)
                .SetFontColor(customColor1);
-            document.Add(body3);
+            tempDocument.Add(body3);
 
             //-------------- linha separadora--
             Div div03 = new Div();
@@ -435,7 +460,7 @@ namespace GerarPDF
             div03.SetMarginLeft(0);
             div03.SetRelativePosition(1, -50, 30, 5);
             div03.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            document.Add(div03);
+            tempDocument.Add(div03);
             //--------
 
             Paragraph paragraph3 = new Paragraph("Lorem Ipsum is simply dummy text of " +
@@ -445,7 +470,7 @@ namespace GerarPDF
                 .SetRelativePosition(1, -50, 30, 60)
                 .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            document.Add(paragraph3);
+            tempDocument.Add(paragraph3);
 
             //##################################################### BLOCO 4 DO PARÁGRAFO , DIVISÃO E TEXTO ########################################################################
 
@@ -460,7 +485,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                .SetFont(font1)
                .SetFontColor(customColor1);
-            document.Add(body4);
+            tempDocument.Add(body4);
 
             //-------------- linha separadora--
             Div div04 = new Div();
@@ -470,7 +495,7 @@ namespace GerarPDF
             div04.SetMarginLeft(0);
             div04.SetRelativePosition(1, -50, 30, 5);
             div04.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            document.Add(div04);
+            tempDocument.Add(div04);
             //--------
 
             Paragraph paragraph4 = new Paragraph("Lorem Ipsum is simply dummy text of " +
@@ -481,7 +506,7 @@ namespace GerarPDF
                 .SetRelativePosition(1, -50, 30, 60)
                  .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            document.Add(paragraph4);
+            tempDocument.Add(paragraph4);
 
             //##################################################### BLOCO 5 DO PARÁGRAFO , DIVISÃO E TEXTO ########################################################################
 
@@ -496,7 +521,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                .SetFont(font1)
                .SetFontColor(customColor1);
-            document.Add(body5);
+            tempDocument.Add(body5);
 
             //-------------- linha separadora--
             Div div05 = new Div();
@@ -506,7 +531,7 @@ namespace GerarPDF
             div05.SetMarginLeft(0);
             div05.SetRelativePosition(1, -50, 30, 5);
             div05.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            document.Add(div05);
+            tempDocument.Add(div05);
             //--------
 
 
@@ -517,7 +542,7 @@ namespace GerarPDF
                 .SetRelativePosition(1, -50, 30, 60)
                  .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            document.Add(paragraph5);
+            tempDocument.Add(paragraph5);
 
 
 
@@ -531,7 +556,7 @@ namespace GerarPDF
             divfooter.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
             divfooter.SetRelativePosition(5, 70, 30, 69);
 
-            //document.Add(divfooter);
+            //tempDocument.Add(divfooter);
 
             Paragraph paragraphFooter = new Paragraph("Especificações sujeitas a alterações sem aviso prévio. Documento não contratual.")
                .SetFontSize(6)
@@ -540,7 +565,7 @@ namespace GerarPDF
                .SetWidth(UnitValue.CreatePercentValue(50))
                .SetRelativePosition(1, 65, 30, 90)
                .SetFontColor(ColorConstants.BLACK);
-            document.Add(paragraphFooter);
+            tempDocument.Add(paragraphFooter);
 
 
             Paragraph mafirolCom0 = new Paragraph(".mafirol.com")
@@ -552,7 +577,7 @@ namespace GerarPDF
             .SetRelativePosition(158, 77, 40, 100)
             //.SetFontFamily() .SetTextAlignment(TextAlignment.CENTER)
             .SetFontColor(ColorConstants.GRAY);
-            document.Add(mafirolCom0);
+            tempDocument.Add(mafirolCom0);
             //##################################### IMAGEM 1 FOOTERS ############################################################
 
 
@@ -567,7 +592,7 @@ namespace GerarPDF
             //img03.SetFixedPosition(2, 290, 2, 1200);
 
             Paragraph footer = new Paragraph().Add(img).SetTextAlignment(TextAlignment.CENTER);
-            document.Add(footer);
+            tempDocument.Add(footer);
 
 
 
@@ -582,19 +607,19 @@ namespace GerarPDF
             //img02.SetRelativePosition(1, 580, 50, 100);
 
             Paragraph footer08 = new Paragraph().Add(img08).SetTextAlignment(TextAlignment.CENTER);
-            document.Add(footer08);
+            tempDocument.Add(footer08);
 
 
 
             //################################################################### SEGUNDA PÁGINA #################################################################################################
 
             // Adiciona nova página
-            document.Add(new AreaBreak(AreaBreakType.NEXT_PAGE));
+            tempDocument.Add(new AreaBreak(AreaBreakType.NEXT_PAGE));
 
-            document.Add(header);
-            document.Add(subHeader1);
-            document.Add(subHeader2);
-            document.Add(div1);
+            tempDocument.Add(header);
+            tempDocument.Add(subHeader1);
+            tempDocument.Add(subHeader2);
+            tempDocument.Add(div1);
 
             //#####################################################################  ---------  BODY --------   ###################################################################################
 
@@ -608,9 +633,9 @@ namespace GerarPDF
             // Você pode alterar a escala da imagem de acordo com suas necessidades
             imager.ScaleAbsolute(490, 390);
 
-            // Defina a posição da imagem (x, y) no documento         
+            // Defina a posição da imagem (x, y) no tempDocumento         
             imager.SetRelativePosition(40, -70, 40, 800);
-            document.Add(imager);
+            tempDocument.Add(imager);
 
             Paragraph body6 = new Paragraph("INFORMAÇÃO TÉCNICA")
               .SetWidth(70)
@@ -623,7 +648,7 @@ namespace GerarPDF
               .SetMarginTop(0)
              .SetFont(font1)
              .SetFontColor(customColor1);
-            document.Add(body6);
+            tempDocument.Add(body6);
 
             //-------------- linha separadora--
             Div div06 = new Div();
@@ -633,7 +658,7 @@ namespace GerarPDF
             div06.SetMarginLeft(0);
             div06.SetRelativePosition(1, -114, 30, 5);
             div06.SetHorizontalAlignment(HorizontalAlignment.CENTER);  // Centraliza a Div
-            document.Add(div06);
+            tempDocument.Add(div06);
             //--------
 
             //PDFModel models = new PDFModel();
@@ -671,7 +696,7 @@ namespace GerarPDF
                    .SetFont(font4)
                    .SetFontColor(customColor1)
              .SetFixedPosition(2, 20, 330, 276);
-            document.Add(para1);
+            tempDocument.Add(para1);
 
             //############# TABELA AO LADO DE CADA LABEL
 
@@ -747,7 +772,7 @@ namespace GerarPDF
 
             tables01.SetFixedPosition(2, 326, 330, 120);
            
-            document.Add(tables01);
+            tempDocument.Add(tables01);
 
             //###### Label 2
 
@@ -760,7 +785,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)                 
             .SetFixedPosition(2, 20, 315, 276);
-            document.Add(para2);
+            tempDocument.Add(para2);
 
             //############# TABELA AO LADO DE CADA LABEL
 
@@ -829,7 +854,7 @@ namespace GerarPDF
 
             tables02.SetFixedPosition(2, 325, 310, 120);
 
-            document.Add(tables02);
+            tempDocument.Add(tables02);
 
 
 
@@ -842,7 +867,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)                 
             .SetFixedPosition(2, 20, 300, 276);
-            document.Add(para3);
+            tempDocument.Add(para3);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -917,7 +942,7 @@ namespace GerarPDF
 
             tables03.SetFixedPosition(2, 325, 296, 120);
 
-            document.Add(tables03);
+            tempDocument.Add(tables03);
 
 
             Paragraph para4 = new Paragraph("Volume de exposição refrigerada (m3)")
@@ -929,7 +954,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)                 
             .SetFixedPosition(2, 20, 285, 276);
-            document.Add(para4);
+            tempDocument.Add(para4);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -997,7 +1022,7 @@ namespace GerarPDF
 
             tables04.SetFixedPosition(2, 325, 280, 120);
 
-            document.Add(tables04);
+            tempDocument.Add(tables04);
 
 
             Paragraph para5 = new Paragraph("Comprimento total com laterais (mm)")
@@ -1009,7 +1034,7 @@ namespace GerarPDF
                   .SetMarginBottom(20)
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 266, 276);
-            document.Add(para5);
+            tempDocument.Add(para5);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1083,7 +1108,7 @@ namespace GerarPDF
 
             tables05.SetFixedPosition(2, 325, 265, 120);
 
-            document.Add(tables05);
+            tempDocument.Add(tables05);
 
 
 
@@ -1096,7 +1121,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 242, 276);
-            document.Add(para6);
+            tempDocument.Add(para6);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1126,7 +1151,7 @@ namespace GerarPDF
 
             tables06.SetFixedPosition(2, 325, 240, 200);
 
-            document.Add(tables06);
+            tempDocument.Add(tables06);
 
 
 
@@ -1139,7 +1164,7 @@ namespace GerarPDF
                   .SetMarginBottom(5)
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 228, 276);
-            document.Add(para7);
+            tempDocument.Add(para7);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1208,7 +1233,7 @@ namespace GerarPDF
 
             tables07.SetFixedPosition(2, 325, 225, 120);
              
-            document.Add(tables07);
+            tempDocument.Add(tables07);
 
 
 
@@ -1221,7 +1246,7 @@ namespace GerarPDF
                   .SetMarginBottom(5)
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 214, 276);
-            document.Add(para8);
+            tempDocument.Add(para8);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1294,7 +1319,7 @@ namespace GerarPDF
 
             tables08.SetFixedPosition(2, 325, 214, 120);
 
-            document.Add(tables08);
+            tempDocument.Add(tables08);
 
 
 
@@ -1307,7 +1332,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 197, 276);
-            document.Add(para9);
+            tempDocument.Add(para9);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1376,7 +1401,7 @@ namespace GerarPDF
 
             tables09.SetFixedPosition(2, 325, 197, 120);
 
-            document.Add(tables09);
+            tempDocument.Add(tables09);
 
 
 
@@ -1389,7 +1414,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 180, 276);
-            document.Add(para10);
+            tempDocument.Add(para10);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1462,7 +1487,7 @@ namespace GerarPDF
 
             tables10.SetFixedPosition(2, 325, 180, 120);
 
-            document.Add(tables10);
+            tempDocument.Add(tables10);
 
 
             Paragraph para11 = new Paragraph("Classe eficiência energética")
@@ -1474,7 +1499,7 @@ namespace GerarPDF
                   .SetMarginBottom(5)
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 166, 276);
-            document.Add(para11);
+            tempDocument.Add(para11);
 
 
             Table tables012 = new Table(4);
@@ -1497,7 +1522,7 @@ namespace GerarPDF
 
             tables012.SetFixedPosition(2, 322, 152, 276);
 
-            document.Add(tables012);
+            tempDocument.Add(tables012);
 
 
 
@@ -1510,7 +1535,7 @@ namespace GerarPDF
                  .SetMarginBottom(5) 
                  .SetFont(font4)
            .SetFixedPosition(2, 20, 135, 276);
-            document.Add(para12);
+            tempDocument.Add(para12);
 
             Paragraph paraDetails12 = new Paragraph("*Para classe temperatura M1 (-1, +5ºC)")
                  .SetMarginRight(0).SetPaddingRight(0)
@@ -1521,7 +1546,7 @@ namespace GerarPDF
                  .SetMarginBottom(5)
                  .SetFont(font4)
            .SetFixedPosition(2, 325, 125, 180);
-            document.Add(paraDetails12);
+            tempDocument.Add(paraDetails12);
 
             //############# TABELA AO LADO DE CADA LABEL
 
@@ -1593,7 +1618,7 @@ namespace GerarPDF
 
             tables11.SetFixedPosition(2, 325, 135, 120);
 
-            document.Add(tables11);
+            tempDocument.Add(tables11);
 
 
 
@@ -1613,7 +1638,7 @@ namespace GerarPDF
              .SetRelativePosition(60, 130, 40, 100)
              //.SetFontFamily() .SetTextAlignment(TextAlignment.CENTER)
              .SetFontColor(ColorConstants.BLACK);
-            document.Add(TitleFooter);
+            tempDocument.Add(TitleFooter);
 
             Paragraph mafirolCom = new Paragraph(".mafirol.com")
             .SetFontSize(8)
@@ -1624,7 +1649,7 @@ namespace GerarPDF
             .SetRelativePosition(158, 192, 40, 100)
             //.SetFontFamily() .SetTextAlignment(TextAlignment.CENTER)
             .SetFontColor(ColorConstants.GRAY);
-            document.Add(mafirolCom);
+            tempDocument.Add(mafirolCom);
 
             Paragraph paragraphFooter3 = new Paragraph("Este equipamento foi projetado para operar" +
                 " num ambiente interior onde a temperatura e a humidade relativa não exceda 25ºC e 60%Hr (classe climática 3).\r\nNão instalar sob a luz solar direta ou sobre influência de corrente de ar.")
@@ -1635,17 +1660,17 @@ namespace GerarPDF
                .SetTextAlignment(TextAlignment.CENTER)
                .SetFixedPosition(2, -150, 70, 900)
                .SetFontColor(ColorConstants.BLACK);
-            document.Add(paragraphFooter3);
+            tempDocument.Add(paragraphFooter3);
 
 
-            Paragraph paragraphFooter2 = new Paragraph("Especificações sujeitas a alterações sem aviso prévio. Documento não contratual.")
+            Paragraph paragraphFooter2 = new Paragraph("Especificações sujeitas a alterações sem aviso prévio. tempDocumento não contratual.")
                .SetFontSize(7)
                .SetMarginLeft(38)
                .SetHorizontalAlignment(HorizontalAlignment.CENTER) //----------------------------------------------------------------------------------------------
                .SetWidth(UnitValue.CreatePercentValue(50))
                .SetFixedPosition(2, 175, 50, 900)
                .SetFontColor(ColorConstants.BLACK);
-            document.Add(paragraphFooter2);
+            tempDocument.Add(paragraphFooter2);
 
 
             //##################################### IMAGEM 1 FOOTERS ############################################################
@@ -1659,7 +1684,7 @@ namespace GerarPDF
             //img02.SetRelativePosition(1, 580, 50, 100);
 
             Paragraph footer02 = new Paragraph().Add(img02).SetTextAlignment(TextAlignment.CENTER);
-            document.Add(footer02);
+            tempDocument.Add(footer02);
 
 
             //##################################### IMAGEM 2 FOOTERS ############################################################
@@ -1673,18 +1698,28 @@ namespace GerarPDF
             //img02.SetRelativePosition(1, 580, 50, 100);
 
             Paragraph footer03 = new Paragraph().Add(img03).SetTextAlignment(TextAlignment.CENTER);
-            document.Add(footer03);
+            tempDocument.Add(footer03);
+
+            //####################################### FIM FOOTER ####################################
+
+            // Crie o documento final antes de fechar o intermediário
+            PdfWriter writer = new PdfWriter(ms);
+            PdfDocument pdf = new PdfDocument(writer);
+
+            // Crie um novo documento para o PDF final
+            Document finalDocument = new Document(pdf);
+
+            // Copie as páginas do documento intermediário para o documento final
+            tempPdf.CopyPagesTo(1, tempPdf.GetNumberOfPages(), pdf);
+
+            // Feche o documento intermediário e o final
+            tempDocument.Close();
+            finalDocument.Close();
+
+            // Retorne o MemoryStream
+            return ms;
 
 
-
-
-            document.Close();
-
-            stream.Position = 0;
-            return new FileStreamResult(stream, "application/pdf")
-            {
-                FileDownloadName = name
-            };
 
             //Process.Start(new ProcessStartInfo(pdfPath) { UseShellExecute = true }); //Abre o arquivo após ser criado
         }
