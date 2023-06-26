@@ -18,115 +18,178 @@ using System.Runtime.ConstrainedExecution;
 using iText.IO.Font.Otf;
 using System.Reflection.Emit;
 using System.Runtime.Intrinsics.X86;
-using Microsoft.AspNetCore.Mvc;
 
 namespace GerarPDF
 {
+
+    public class RalImg
+    {
+        public int Id { get; set; }
+        public string? Url { get; set; }
+    }
+
     public class PDFModel
     {
         // Page One
-        public string? Language { get; set; }
-        public string? Title { get; set; }
-        public string? Subtitle { get; set; }
-        public string? SubtitleText { get; set; }
+        public string? Language { get; set; } = "PT";
+        public string? Title { get; set; } = "ultar";
+        public string? Subtitle { get; set; } = "MURAL refrigerado COM PORTAS";
+        public string? SubtitleText { get; set; } = "CARNE | LÁCTEOS | FRUTA E VEGETAIS";
 
-        public string? Title1 { get; set; }
-        public string? Paragraph1 { get; set; }
+        public string? Title1 { get; set; } = "DESCRIÇÃO GERAL";
+        public string? Paragraph1 { get; set; } = "Lorem Ipsum is simply dummy text of the printing and\r\ntypesetting industry. Lorem Ipsum has been the\r\nindustry's standard dummy text ever since the\r\n1500s,Lorem Ipsum is simply dummy text of the\r\nprinting and typesetting industry. Lorem Ipsum has\r\nbeen the industry's standard dummy text ever since the\r\n1500s,";
 
-        public string? Title2 { get; set; }
-        public string? Paragraph2 { get; set; }
+        public string? Title2 { get; set; } = "SISTEMA DE REFRIGERAÇÃO";
+        public string? Paragraph2 { get; set; } = "Lorem Ipsum is simply dummy text of the printing and\r\ntypesetting industry. Lorem Ipsum has been the\r\nindustry's standard dummy text ever since the 1500s,";
 
-        public string? Title3 { get; set; }
-        public string? Paragraph3 { get; set; }
+        public string? Title3 { get; set; } = "SISTEMA ELÉTRICO, COMANDO E REGULAÇÃO";
+        public string? Paragraph3 { get; set; } = "Lorem Ipsum is simply dummy text of the printing and\r\ntypesetting industry. Lorem Ipsum has been the\r\nindustry's standard dummy text ever since the 1500s";
 
-        public string? Title4 { get; set; }
-        public string? Paragraph4 { get; set; }
+        public string? Title4 { get; set; } = "COMPLEMENTOS";
+        public string? Paragraph4 { get; set; } = "Lorem Ipsum is simply dummy text of the printing and\r\ntypesetting industry. Lorem y. Lorem Ipsum has been\r\nthe industry's standard dummy text ever since Ipsum\r\nhas been the industry's standard dummy text ever\r\nsince the 1500s,";
 
-        public string? Title5 { get; set; }
-        public string? Paragraph5 { get; set; }
+        public string? Title5 { get; set; } = "OPÇÕES";
+        public string? Paragraph5 { get; set; } = "Lorem Ipsum is simply dummy text of the printing and\r\ntypesetting industry. Lorem Ipsum has been the\r\nindustry's standard dummy text ever since the 1500s,";
 
-        public string? ExteriorColor { get; set; }
-        public string? InteriorColor { get; set; }
-        public string? TextFooter1 { get; set; }
+        public string? ExteriorColor { get; set; } = "COR EXTERIOR STANDARD";
+        public string? InteriorColor { get; set; } = "COR INTERIOR STANDARD";
+
+        public List<string> ListColor1 { get; set; } = new List<string> {
+                "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1012.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1013.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1021.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1037.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2001.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2002.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2008.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3000.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3016.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5000.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5015.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5023.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5010.png",  
+             
+                                             
+                // ...
+            };
+
+        public List<string> ListColor2 { get; set; } = new List<string> {
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1012.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1013.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1021.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1037.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2001.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2002.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2008.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3000.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3016.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5000.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5015.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5023.png",
+                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5010.png",                
+             
+                                             
+                // ...
+         };
+
+        public string? UrlImgMain { get; set; } = "https://mm.mafirol.info/Categories/Subfamilies/20230607152016175_ef9729b0-fd42-4173-9e2d-0ce8bd29ac4e.png";
+
+        //Footer 1
+        public string? TextFooter1 { get; set; } = "Especificações sujeitas a alterações sem aviso prévio. Documento não contratual.";
 
 
         //Page Two
-        public string? Param08 { get; set; }
-        public string? Param09 { get; set; }
-        public string? Param10 { get; set; }
-        public string? Param11 { get; set; }
-        public string? Param12 { get; set; }
-        public string? Param13 { get; set; }
-        public string? Param14 { get; set; }
-        public string? Param15 { get; set; }
-        public string? Param16 { get; set; }
-        public string? Param17 { get; set; }
-        public string? Param18 { get; set; }
-        public string? Param19 { get; set; }
-        public string? Param20 { get; set; }
-        public string? Param21 { get; set; }
-        public string? Param22 { get; set; }
-        public string? Param23 { get; set; }
+        public string? UrlImgCut { get; set; } = "https://mm.mafirol.info/Categories/Variants/Profile/20230524135250806_92d9f97f-c500-483d-a744-f5a757ef9295.png";
+        public string? TechnicalInformation { get; set; } = "INFORMAÇÃO TÉCNICA";
+
+        public string? Col1Model { get; set; } = "1250";
+        public string? Col2Model { get; set; } = "1875";
+        public string? Col3Model { get; set; } = "2500";
+        public string? Col4Model { get; set; } = "3750";
+
+        public string? Param1 { get; set; } = "Área total de exposição (TDA) (m2)";
+        public string? Col1Param1 { get; set; } = "1.88";
+        public string? Col2Param1 { get; set; } = "2.82";
+        public string? Col3Param1 { get; set; } = "3.76";
+        public string? Col4Param1 { get; set; } = "5.64";
+
+        public string? Param2 { get; set; } = "Superfície de refrigerada (m 2)";
+        public string? Col1Param2 { get; set; } = "3.56";
+        public string? Col2Param2 { get; set; } = "5.33";
+        public string? Col3Param2 { get; set; } = "7.11";
+        public string? Col4Param2 { get; set; } = "10.67";
+
+        public string? Param3 { get; set; } = "Volume de exposição refrigerada (m3)";
+        public string? Col1Param3 { get; set; } = "282";
+        public string? Col2Param3 { get; set; } = "1173";
+        public string? Col3Param3 { get; set; } = "1564";
+        public string? Col4Param3 { get; set; } = "2346";
+
+        public string? Param4 { get; set; } = "Comprimento total com laterais (mm)";
+        public string? Col1Param4 { get; set; } = "3.56";
+        public string? Col2Param4 { get; set; } = "5.33";
+        public string? Col3Param4 { get; set; } = "7.11";
+        public string? Col4Param4 { get; set; } = "10.67";
+
+        public string? Param5 { get; set; } = "Tensão/Frequência";
+        public string? ColParam5 { get; set; } = "230V / 50Hz";
+
+        public string? Param6 { get; set; } = "Potência nominal (W)";
+        public string? Col1Param6 { get; set; } = "370";
+        public string? Col2Param6 { get; set; } = "440";
+        public string? Col3Param6 { get; set; } = "710";
+        public string? Col4Param6 { get; set; } = "740";
+
+        public string? Param7 { get; set; } = "Corrente nominal (A)";
+        public string? Col1Param7 { get; set; } = "1.7";
+        public string? Col2Param7 { get; set; } = "2.1";
+        public string? Col3Param7 { get; set; } = "3.2";
+        public string? Col4Param7 { get; set; } = "3.7";
+
+        public string? Param8 { get; set; } = "Iluminação (W)";
+        public string? Col1Param8 { get; set; } = "1 x 19";
+        public string? Col2Param8 { get; set; } = "1 x 22";
+        public string? Col3Param8 { get; set; } = "2 x 19";
+        public string? Col4Param8 { get; set; } = "3 x 19";
+
+        public string? Param9 { get; set; } = "Consumo anual de energia (KWh/a)*";
+        public string? Col1Param9 { get; set; } = "2 874";
+        public string? Col2Param9 { get; set; } = "3 553";
+        public string? Col3Param9 { get; set; } = "5 084";
+        public string? Col4Param9 { get; set; } = "5 794";
+
+        public string? Param10 { get; set; } = "Classe eficiência energética";
+        public string? UrlImageEfficientEnergyParam10 { get; set; } = "https://mm.mafirol.info/Categories/Subfamilies/EnergyEfficiency/20220107172351808_f900b70d-817b-43aa-8b82-d9bb76a8606e.jpg";
+
+        public string? Param11 { get; set; } = "Resistência evaporação condensados (opcional)";
+        public string? Col1Param11 { get; set; } = "1 x 270";
+        public string? Col2Param11 { get; set; } = "2 x 270";
+        public string? Col3Param11 { get; set; } = "2 x 270";
+        public string? Col4Param11 { get; set; } = "3 x 270";
+        public string? ParamTextUnder { get; set; } = "*Para classe temperatura M1 (-1, +5ºC)";
+
+        //Footer 2
+        public string? TitleFooter2 { get; set; } = "Condições de operação recomendadas:";
+        public string? SubTitleFooter2 { get; set; } = "Este equipamento foi projetado para operar num ambiente interior onde a temperatura e a humidade relativa não exceda 25ºC e 60%Hr (classe climática 3).\r\nNão instalar sob a luz solar direta ou sobre influência de corrente de ar.";
+        public string? TextFooter2 { get; set; } = "Especificações sujeitas a alterações sem aviso prévio. Documento não contratual.";
     }
   
 
     public class Teste01
     {
 
-        public MemoryStream Teste()
+        public void Teste()
         {
-            //#################### ELE ESCREVE NO DIRETÓRIO O PDF GERADO E ABRE APÓS ESCREVÊ-LO
-
+            PDFModel genpdf = new PDFModel();
             //string pdfPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "teste.pdf");
-            //var name = Guid.NewGuid().ToString();
-            //var pdfPath = $@"C:\\pdf\{name}_teste.pdf";
+            var name = Guid.NewGuid().ToString();
+            var pdfPath = $@"C:\\pdf\{name}_teste.pdf";
 
 
-            //PdfWriter writer = new PdfWriter(pdfPath);
-            //PdfDocument pdf = new PdfDocument(writer);
-            //Document document = new Document(pdf, PageSize.A4);
-            //document.SetMargins(5, 20, 0, 20);
-
-
-            //#################### ELE ESCREVE NO DIRETÓRIO O PDF GERADO E ABRE APÓS ESCREVÊ-LO / Ao final está adaptado para emitir em memóeria e comentado a criar em diretório
-
-            //var stream = new MemoryStream();
-
-            //// Crie um documento intermediário
-            //PdfWriter tempWriter = new PdfWriter(new MemoryStream());
-            //PdfDocument tempPdf = new PdfDocument(tempWriter);
-            //Document tempDocument = new Document(tempPdf);
-            //tempDocument.SetMargins(5, 20, 0, 20);
-
-
-
-            //var nameResult = Guid.NewGuid().ToString();
-
-            //var name = "InfoMafirol_product_" + nameResult.Substring(0, 2) + ".pdf";
-
-
-            //PdfWriter writer = new PdfWriter(stream);
-            //PdfDocument pdf = new PdfDocument(writer);
-            //Document document = new Document(pdf, PageSize.A4);
-            //document.SetMargins(5, 20, 0, 20);
-
-
-
-
-            //############################### BEGIN ##########################################
-
-
-            // Crie um MemoryStream para o PdfWriter
-            MemoryStream tempMemoryStream = new MemoryStream();
-
-            // Crie um documento intermediário
-            PdfWriter tempWriter = new PdfWriter(tempMemoryStream);
-            PdfDocument tempPdf = new PdfDocument(tempWriter);
-            Document tempDocument = new Document(tempPdf);
-
-
-
-
+            PdfWriter writer = new PdfWriter(pdfPath);
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf, PageSize.A4);
+            document.SetMargins(5, 20, 0, 20);
 
             //-------------------------------- COLOR ------------------------------------
 
@@ -155,19 +218,14 @@ namespace GerarPDF
 
             //-------------------------------- HEADER ------------------------------------
 
-            Paragraph header = new Paragraph("ULTAR")
+            Paragraph header = new Paragraph(genpdf.Title.ToUpper())
                 .SetRelativePosition(1, 0, 40, 14)
-                //.SetTextAlignment(TextAlignment.CENTER)
-                //.SetMargins(0 ,0 ,0 ,0)
-                //.SetMarginBottom(0)
-                //.SetPaddingBottom(0)
-                //.SetPaddings( 0, 0 ,0 ,0)
                 .SetFontColor(customColor)
                 .SetFont(font)
                 .SetFontSize(75);
-            tempDocument.Add(header);
+            document.Add(header);
 
-            Paragraph subHeader1 = new Paragraph("MURAL REFRIGERADO COM PORTAS")
+            Paragraph subHeader1 = new Paragraph(genpdf.Subtitle.ToUpper())
                .SetRelativePosition(5, 0, 40, 62)
                .SetMarginTop(0)
                .SetPaddingTop(0)
@@ -176,11 +234,11 @@ namespace GerarPDF
                .SetTextAlignment(TextAlignment.RIGHT)
                .SetFont(font4)
                .SetFontSize(11);
-            tempDocument.Add(subHeader1);
+            document.Add(subHeader1);
 
 
 
-            Paragraph subHeader2 = new Paragraph("CARNE | LÁCTEOS | FRUTA E VEGETAIS")
+            Paragraph subHeader2 = new Paragraph(genpdf.SubtitleText.ToUpper())
                .SetRelativePosition(5, 0, 30, 65)
                .SetMarginTop(0)
                .SetPaddingTop(0)
@@ -188,7 +246,7 @@ namespace GerarPDF
                .SetFontColor(customColor3)
                .SetFont(font1)
                .SetFontSize(12);
-            tempDocument.Add(subHeader2);
+            document.Add(subHeader2);
 
 
             Div div1 = new Div();
@@ -198,7 +256,7 @@ namespace GerarPDF
             div1.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
             div1.SetRelativePosition(5, 0, 30, 69);
 
-            tempDocument.Add(div1);
+            document.Add(div1);
 
             //-------------------------------- BODY ------------------------------------
 
@@ -209,20 +267,20 @@ namespace GerarPDF
             // ############################################# IMAGEM ##########################################################
             //string imagePaths = "https://mm.mafirol.info/Categories/Subfamilies/20230427084848996_d088e2aa-01e4-43e5-bbfe-2822e06e2911.png"; // Altere para a URL da imagem ou caminho local
             //string imagePaths = "https://mm.mafirol.info/Categories/Subfamilies/20230609074430920_5ccc7720-0ec9-44e2-9cca-deef438064bb.png"; // Altere para a URL da imagem ou caminho local
-            string imagePaths = "https://mm.mafirol.info/Categories/Subfamilies/20230607152016175_ef9729b0-fd42-4173-9e2d-0ce8bd29ac4e.png"; // Altere para a URL da imagem ou caminho local
-            ImageData imageDatas = ImageDataFactory.Create(imagePaths);
+            //string imagePaths = "https://mm.mafirol.info/Categories/Subfamilies/20230607152016175_ef9729b0-fd42-4173-9e2d-0ce8bd29ac4e.png"; // Altere para a URL da imagem ou caminho local
+            ImageData imageDatas = ImageDataFactory.Create(genpdf.UrlImgMain);
             Image images = new Image(imageDatas);
 
             // Você pode alterar a escala da imagem de acordo com suas necessidades
             images.ScaleAbsolute(410, 310);
-            // Defina a posição da imagem (x, y) no temptempDocumento
+            // Defina a posição da imagem (x, y) no documento
             images.SetFixedPosition(230, 400);
 
-            tempDocument.Add(images);
+            document.Add(images);
 
             //##################################################### BLOCO ABAIXO DA IMAGEM PRINCIPAL, DIVISÃO E TEXTO ########################################################################
 
-            Paragraph body00 = new Paragraph("COR EXTERIOR STANDARD")
+            Paragraph body00 = new Paragraph(genpdf.ExteriorColor.ToUpper())
                 .SetWidth(UnitValue.CreatePercentValue(w))
                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
                 //.SetRelativePosition(ml, 70, 0, 0) // Ajustado
@@ -231,7 +289,7 @@ namespace GerarPDF
                 .SetFixedPosition(350, 350, 200) // Usando SetFixedPosition
                 .SetFont(font1)
                 .SetFontColor(customColor1);
-            tempDocument.Add(body00);
+            document.Add(body00);
 
             //-------------- linha separadora--
             Div div00 = new Div();
@@ -240,36 +298,36 @@ namespace GerarPDF
             div00.SetMarginBottom(5);
             div00.SetFixedPosition(350, 350, 200);
             div00.SetHorizontalAlignment(HorizontalAlignment.RIGHT);
-            tempDocument.Add(div00);
+            document.Add(div00);
             //--------
 
             // Cria uma tabela com 4 colunas (ajuste conforme necessário)
             Table table = new Table(4);
 
-            // Lista de URLs das imagens
-            List<string> imageUrlsExt = new List<string>
-            {
-                "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1012.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1013.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1021.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1037.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2001.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2002.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2008.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3000.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3016.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5000.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5015.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5023.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5010.png",  
+            //// Lista de URLs das imagens
+            //List<string> imageUrlsExt = new List<string>
+            //{
+            //    "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1012.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1013.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1021.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1037.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2001.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2002.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2008.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3000.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3016.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5000.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5015.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5023.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5010.png",  
              
                                              
-                // ...
-            };
+            //    // ...
+            //};
 
             int count = 0;
 
-            foreach (string url in imageUrlsExt)
+            foreach (string url in genpdf.ListColor1)
             {
                 if (count >= 12)
                     break;
@@ -287,14 +345,14 @@ namespace GerarPDF
                 count++;
             }
 
-            // Posiciona a tabela no tempDocumento
+            // Posiciona a tabela no documento
             table.SetFixedPosition(350, 200, 200);
-            tempDocument.Add(table);
+            document.Add(table);
 
 
             //##################################################### BLOCO 02 ABAIXO DA IMAGEM PRINCIPAL, DIVISÃO E TEXTO ########################################################################
 
-            Paragraph body02 = new Paragraph("COR Interior STANDARD".ToUpper())
+            Paragraph body02 = new Paragraph(genpdf.InteriorColor.ToUpper())
                 .SetWidth(UnitValue.CreatePercentValue(w))
                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
                 .SetTextAlignment(TextAlignment.CENTER)
@@ -302,7 +360,7 @@ namespace GerarPDF
                 .SetFixedPosition(350, 165, 200) // Usando SetFixedPosition
                 .SetFont(font1)
                 .SetFontColor(customColor1);
-            tempDocument.Add(body02);
+            document.Add(body02);
 
             //-------------- linha separadora--
             Div div001 = new Div();
@@ -311,35 +369,35 @@ namespace GerarPDF
             div001.SetMarginBottom(5);
             div001.SetFixedPosition(350, 165, 200);
             div001.SetHorizontalAlignment(HorizontalAlignment.RIGHT);
-            tempDocument.Add(div001);
+            document.Add(div001);
             //--------
 
             // Cria uma tabela com 4 colunas (ajuste conforme necessário)
             Table table02 = new Table(4);
 
-            // Lista de URLs das imagens
-            List<string> imageUrlsInt = new List<string>
-            {
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1012.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1013.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1021.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1037.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2001.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2002.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2008.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3000.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3016.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5000.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5015.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5023.png",
-                  "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5010.png",                
+            //// Lista de URLs das imagens
+            //List<string> imageUrlsInt = new List<string>
+            //{
+            //"\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1012.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1013.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1021.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\1037.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2001.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2002.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\2008.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3000.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\3016.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5000.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5015.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5023.png",
+            //      "\\\\mafserver\\DARQ\\Marketing\\MATERIAL DE TRABALHO\\RAL\\5010.png",                
                                         
-                // ...
-            };
+            //    // ...
+            //};
 
             int counter = 0;
 
-            foreach (string url in imageUrlsInt)
+            foreach (string url in genpdf.ListColor2)
             {
                 if (counter >= 8)
                     break;
@@ -357,13 +415,13 @@ namespace GerarPDF
                 counter++;
             }
 
-            // Posiciona a tabela no tempDocumento
+            // Posiciona a tabela no documento
             table02.SetFixedPosition(350, 65, 200);
-            tempDocument.Add(table02);
+            document.Add(table02);
 
             //##################################################### BLOCO 1 DO PARÁGRAFO , DIVISÃO E TEXTO ########################################################################
 
-            Paragraph body = new Paragraph("DESCRIÇÃO GERAL")
+            Paragraph body = new Paragraph(genpdf.Title1.ToUpper())
                 .SetWidth(70)
                 .SetWidth(UnitValue.CreatePercentValue(w))
                 .SetHorizontalAlignment(HorizontalAlignment.LEFT)
@@ -374,7 +432,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                 .SetFont(font1)
                 .SetFontColor(customColor1);
-            tempDocument.Add(body);
+            document.Add(body);
 
             //-------------- linha separadora--
 
@@ -385,25 +443,23 @@ namespace GerarPDF
             div.SetMarginLeft(0);
             div.SetRelativePosition(1, -50, 30, 5);
             div.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            tempDocument.Add(div);
+            document.Add(div);
             //--------
 
 
-            Paragraph paragraph1 = new Paragraph("Lorem Ipsum is simply dummy text of " +
-                "the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of " +
-                "the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ")
+            Paragraph paragraph1 = new Paragraph(genpdf.Paragraph1)
                 .SetFontSize(9)
                 .SetWidth(UnitValue.CreatePercentValue(40))
                 .SetRelativePosition(1, -50, 30, 60)
                  .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            tempDocument.Add(paragraph1);
+            document.Add(paragraph1);
 
 
 
             //##################################################### BLOCO 2 DO PARÁGRAFO , DIVISÃO E TEXTO ########################################################################
 
-            Paragraph body2 = new Paragraph("SISTEMA DE REFRIGERAÇÃO")
+            Paragraph body2 = new Paragraph(genpdf.Title2.ToUpper())
                 .SetWidth(70)
                 .SetWidth(UnitValue.CreatePercentValue(w))
                 .SetHorizontalAlignment(HorizontalAlignment.LEFT)
@@ -414,7 +470,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                .SetFont(font1)
                .SetFontColor(customColor1);
-            tempDocument.Add(body2);
+            document.Add(body2);
 
             //-------------- linha separadora--
             Div div01 = new Div();
@@ -424,22 +480,21 @@ namespace GerarPDF
             div01.SetMarginLeft(0);
             div01.SetRelativePosition(1, -50, 30, 5);
             div01.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            tempDocument.Add(div01);
+            document.Add(div01);
             //--------
 
 
-            Paragraph paragraph2 = new Paragraph("Lorem Ipsum is simply dummy text of " +
-               "the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ")
+            Paragraph paragraph2 = new Paragraph(genpdf.Paragraph2)
                .SetFontSize(9)
                 .SetWidth(UnitValue.CreatePercentValue(40))
                 .SetRelativePosition(1, -50, 30, 60)
                 .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            tempDocument.Add(paragraph2);
+            document.Add(paragraph2);
 
             //##################################################### BLOCO 3 DO PARÁGRAFO , DIVISÃO E TEXTO ########################################################################
 
-            Paragraph body3 = new Paragraph("SISTEMA ELÉTRICO,\r\nCOMANDO E REGULAÇÃO")
+            Paragraph body3 = new Paragraph(genpdf.Title3.ToUpper())
                 .SetWidth(70)
                 .SetWidth(UnitValue.CreatePercentValue(w))
                 .SetHorizontalAlignment(HorizontalAlignment.LEFT)
@@ -450,7 +505,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                .SetFont(font1)
                .SetFontColor(customColor1);
-            tempDocument.Add(body3);
+            document.Add(body3);
 
             //-------------- linha separadora--
             Div div03 = new Div();
@@ -460,21 +515,20 @@ namespace GerarPDF
             div03.SetMarginLeft(0);
             div03.SetRelativePosition(1, -50, 30, 5);
             div03.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            tempDocument.Add(div03);
+            document.Add(div03);
             //--------
 
-            Paragraph paragraph3 = new Paragraph("Lorem Ipsum is simply dummy text of " +
-               "the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ")
+            Paragraph paragraph3 = new Paragraph(genpdf.Paragraph3)
                .SetFontSize(9)
                 .SetWidth(UnitValue.CreatePercentValue(40))
                 .SetRelativePosition(1, -50, 30, 60)
                 .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            tempDocument.Add(paragraph3);
+            document.Add(paragraph3);
 
             //##################################################### BLOCO 4 DO PARÁGRAFO , DIVISÃO E TEXTO ########################################################################
 
-            Paragraph body4 = new Paragraph("COMPLEMENTOS")
+            Paragraph body4 = new Paragraph(genpdf.Title4.ToUpper())
                 .SetWidth(70)
                 .SetWidth(UnitValue.CreatePercentValue(w))
                 .SetHorizontalAlignment(HorizontalAlignment.LEFT)
@@ -485,7 +539,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                .SetFont(font1)
                .SetFontColor(customColor1);
-            tempDocument.Add(body4);
+            document.Add(body4);
 
             //-------------- linha separadora--
             Div div04 = new Div();
@@ -495,22 +549,20 @@ namespace GerarPDF
             div04.SetMarginLeft(0);
             div04.SetRelativePosition(1, -50, 30, 5);
             div04.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            tempDocument.Add(div04);
+            document.Add(div04);
             //--------
 
-            Paragraph paragraph4 = new Paragraph("Lorem Ipsum is simply dummy text of " +
-               "the printing and typesetting industry. Lorem y. Lorem Ipsum has been the industry's standard dummy text ever since " +
-               "Ipsum has been the industry's standard dummy text ever since the 1500s, ")
+            Paragraph paragraph4 = new Paragraph(genpdf.Paragraph4)
                 .SetFontSize(9)
                 .SetWidth(UnitValue.CreatePercentValue(40))
                 .SetRelativePosition(1, -50, 30, 60)
                  .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            tempDocument.Add(paragraph4);
+            document.Add(paragraph4);
 
             //##################################################### BLOCO 5 DO PARÁGRAFO , DIVISÃO E TEXTO ########################################################################
 
-            Paragraph body5 = new Paragraph("OPÇÕES")
+            Paragraph body5 = new Paragraph(genpdf.Title5.ToUpper())
                  .SetWidth(70)
                 .SetWidth(UnitValue.CreatePercentValue(w))
                 .SetHorizontalAlignment(HorizontalAlignment.LEFT)
@@ -521,7 +573,7 @@ namespace GerarPDF
                 .SetMarginTop(0)
                .SetFont(font1)
                .SetFontColor(customColor1);
-            tempDocument.Add(body5);
+            document.Add(body5);
 
             //-------------- linha separadora--
             Div div05 = new Div();
@@ -531,18 +583,17 @@ namespace GerarPDF
             div05.SetMarginLeft(0);
             div05.SetRelativePosition(1, -50, 30, 5);
             div05.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
-            tempDocument.Add(div05);
+            document.Add(div05);
             //--------
 
 
-            Paragraph paragraph5 = new Paragraph("Lorem Ipsum is simply dummy text of " +
-               "the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ")
+            Paragraph paragraph5 = new Paragraph(genpdf.Paragraph5)
                .SetFontSize(9)
                 .SetWidth(UnitValue.CreatePercentValue(40))
                 .SetRelativePosition(1, -50, 30, 60)
                  .SetMarginBottom(10)
                 .SetFontColor(ColorConstants.BLACK);
-            tempDocument.Add(paragraph5);
+            document.Add(paragraph5);
 
 
 
@@ -556,16 +607,16 @@ namespace GerarPDF
             divfooter.SetHorizontalAlignment(HorizontalAlignment.LEFT);  // Centraliza a Div
             divfooter.SetRelativePosition(5, 70, 30, 69);
 
-            //tempDocument.Add(divfooter);
+            //document.Add(divfooter);
 
-            Paragraph paragraphFooter = new Paragraph("Especificações sujeitas a alterações sem aviso prévio. Documento não contratual.")
+            Paragraph paragraphFooter = new Paragraph(genpdf.TextFooter1)
                .SetFontSize(6)
                .SetMarginLeft(38)
                .SetHorizontalAlignment(HorizontalAlignment.CENTER)
                .SetWidth(UnitValue.CreatePercentValue(50))
                .SetRelativePosition(1, 65, 30, 90)
                .SetFontColor(ColorConstants.BLACK);
-            tempDocument.Add(paragraphFooter);
+            document.Add(paragraphFooter);
 
 
             Paragraph mafirolCom0 = new Paragraph(".mafirol.com")
@@ -577,11 +628,13 @@ namespace GerarPDF
             .SetRelativePosition(158, 77, 40, 100)
             //.SetFontFamily() .SetTextAlignment(TextAlignment.CENTER)
             .SetFontColor(ColorConstants.GRAY);
-            tempDocument.Add(mafirolCom0);
+            document.Add(mafirolCom0);
             //##################################### IMAGEM 1 FOOTERS ############################################################
 
+            string currentDirectory = Environment.CurrentDirectory;
+            string imagePath = System.IO.Path.Combine(currentDirectory, "Assets" ,"Images", "mafiroLogo.png");
 
-            string imagePath = "https://mm.mafirol.info/assinaturas/Mafirol_mir.png";
+            ////string imagePath = "https://mm.mafirol.info/assinaturas/Mafirol_mir.png";
             ImageData imageData = ImageDataFactory.Create(imagePath);
             Image img = new Image(imageData);
 
@@ -592,13 +645,16 @@ namespace GerarPDF
             //img03.SetFixedPosition(2, 290, 2, 1200);
 
             Paragraph footer = new Paragraph().Add(img).SetTextAlignment(TextAlignment.CENTER);
-            tempDocument.Add(footer);
+            document.Add(footer);
 
 
 
             //##################################### IMAGEM 2 FOOTERS ############################################################
 
-            string imagePath08 = "https://mm.mafirol.info/assinaturas/WWW.png";
+            string currencyDirectory = Environment.CurrentDirectory;
+            string imagePath08 = System.IO.Path.Combine(currencyDirectory, "Assets","Images", "WWWlogo.png");
+
+            //string imagePath08 = "https://mm.mafirol.info/assinaturas/WWW.png";
             ImageData imageDatar08 = ImageDataFactory.Create(imagePath08);
             Image img08 = new Image(imageDatar08);
 
@@ -607,37 +663,37 @@ namespace GerarPDF
             //img02.SetRelativePosition(1, 580, 50, 100);
 
             Paragraph footer08 = new Paragraph().Add(img08).SetTextAlignment(TextAlignment.CENTER);
-            tempDocument.Add(footer08);
+            document.Add(footer08);
 
 
 
             //################################################################### SEGUNDA PÁGINA #################################################################################################
 
             // Adiciona nova página
-            tempDocument.Add(new AreaBreak(AreaBreakType.NEXT_PAGE));
+            document.Add(new AreaBreak(AreaBreakType.NEXT_PAGE));
 
-            tempDocument.Add(header);
-            tempDocument.Add(subHeader1);
-            tempDocument.Add(subHeader2);
-            tempDocument.Add(div1);
+            document.Add(header);
+            document.Add(subHeader1);
+            document.Add(subHeader2);
+            document.Add(div1);
 
             //#####################################################################  ---------  BODY --------   ###################################################################################
 
             // Cria um objeto de imagem
-            string imagePathr = "https://mm.mafirol.info/Categories/Variants/Profile/20230524135250806_92d9f97f-c500-483d-a744-f5a757ef9295.png"; // Altere para a URL da imagem ou caminho local
+            //string imagePathr = "https://mm.mafirol.info/Categories/Variants/Profile/20230524135250806_92d9f97f-c500-483d-a744-f5a757ef9295.png"; // Altere para a URL da imagem ou caminho local
             //string imagePathr = "https://mm.mafirol.info/Categories/Variants/Profile/20230309113554775_553e1c22-3eca-4a47-84ee-d5782b80c048.png";
             //string imagePathr = "https://mm.mafirol.info/Categories/Variants/Profile/20230508134640521_0d9ae880-59f2-4fe5-ab8c-ce9193f9bf0d.png";
-            ImageData imageDatar = ImageDataFactory.Create(imagePathr);
+            ImageData imageDatar = ImageDataFactory.Create(genpdf.UrlImgCut);
             Image imager = new Image(imageDatar);
 
             // Você pode alterar a escala da imagem de acordo com suas necessidades
             imager.ScaleAbsolute(490, 390);
 
-            // Defina a posição da imagem (x, y) no tempDocumento         
+            // Defina a posição da imagem (x, y) no documento         
             imager.SetRelativePosition(40, -70, 40, 800);
-            tempDocument.Add(imager);
+            document.Add(imager);
 
-            Paragraph body6 = new Paragraph("INFORMAÇÃO TÉCNICA")
+            Paragraph body6 = new Paragraph(genpdf.TechnicalInformation.ToUpper())
               .SetWidth(70)
               .SetWidth(UnitValue.CreatePercentValue(w))
               .SetHorizontalAlignment(HorizontalAlignment.CENTER)
@@ -648,7 +704,7 @@ namespace GerarPDF
               .SetMarginTop(0)
              .SetFont(font1)
              .SetFontColor(customColor1);
-            tempDocument.Add(body6);
+            document.Add(body6);
 
             //-------------- linha separadora--
             Div div06 = new Div();
@@ -658,35 +714,35 @@ namespace GerarPDF
             div06.SetMarginLeft(0);
             div06.SetRelativePosition(1, -114, 30, 5);
             div06.SetHorizontalAlignment(HorizontalAlignment.CENTER);  // Centraliza a Div
-            tempDocument.Add(div06);
+            document.Add(div06);
             //--------
 
-            //PDFModel models = new PDFModel();
+          
 
-            //var model = models.model;
+            var model = genpdf.Language.ToUpper();
 
-            //switch (model)
-            //{               
-            //    case "ES":
-            //        model = "MODELO";
-            //        break;
-            //    case "PT":
-            //        model = "MODELO";
-            //        break;
-            //    case "EN":
-            //        model = "MODEL";
-            //        break;
-            //    case "FR":
-            //        model = "MODÈLE";
-            //        break;          
-              
-            //    default:
-            //        break;
-            //}
+            switch (model)
+            {
+                case "ES":
+                    model = "MODELO";
+                    break;
+                case "PT":
+                    model = "MODELO";
+                    break;
+                case "EN":
+                    model = "MODEL";
+                    break;
+                case "FR":
+                    model = "MODÈLE";
+                    break;
 
-            
+                default:
+                    break;
+            }
 
-            Paragraph para1 = new Paragraph("MODELO")
+
+
+            Paragraph para1 = new Paragraph(model)
                 .SetMarginRight(0).SetPaddingRight(0).SetMarginBottom(2)
                 .SetTextAlignment(TextAlignment.RIGHT)
                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -696,7 +752,7 @@ namespace GerarPDF
                    .SetFont(font4)
                    .SetFontColor(customColor1)
              .SetFixedPosition(2, 20, 330, 276);
-            tempDocument.Add(para1);
+            document.Add(para1);
 
             //############# TABELA AO LADO DE CADA LABEL
 
@@ -716,7 +772,7 @@ namespace GerarPDF
                 .SetMargin(5)
                 .SetBorder(Border.NO_BORDER) // Remova a borda
                 .SetBackgroundColor(cellColor) // Ajuste a cor de fundo
-                .Add(new Paragraph("1250")
+                .Add(new Paragraph(genpdf.Col1Model)
                 .SetFont(fonts)
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
@@ -733,7 +789,7 @@ namespace GerarPDF
                   .SetFontSize(6)
                 .SetFontColor(fontColor)
                 .SetTextAlignment(TextAlignment.CENTER)
-                .Add(new Paragraph("1875"));
+                .Add(new Paragraph(genpdf.Col2Model));
 
              Cell cell3 = new Cell(1, 1)
                 .SetHeight(9) // Ajuste a altura da célula
@@ -746,7 +802,7 @@ namespace GerarPDF
                   .SetFontSize(6)
                 .SetFontColor(fontColor)
                 .SetTextAlignment(TextAlignment.CENTER)
-                .Add(new Paragraph("2500"));
+                .Add(new Paragraph(genpdf.Col3Model));
 
             Cell cell4 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -759,7 +815,7 @@ namespace GerarPDF
                  .SetFontSize(6)
                .SetFontColor(fontColor)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("3750"));
+               .Add(new Paragraph(genpdf.Col4Model));
 
 
 
@@ -772,11 +828,11 @@ namespace GerarPDF
 
             tables01.SetFixedPosition(2, 326, 330, 120);
            
-            tempDocument.Add(tables01);
+            document.Add(tables01);
 
             //###### Label 2
 
-            Paragraph para2 = new Paragraph("Área total de exposição (TDA) (m2)")
+            Paragraph para2 = new Paragraph(genpdf.Param1)
                 .SetMarginRight(0).SetPaddingRight(0)
                 .SetTextAlignment(TextAlignment.RIGHT)
                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -785,7 +841,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)                 
             .SetFixedPosition(2, 20, 315, 276);
-            tempDocument.Add(para2);
+            document.Add(para2);
 
             //############# TABELA AO LADO DE CADA LABEL
 
@@ -801,7 +857,7 @@ namespace GerarPDF
                 .SetWidth(30) // Ajuste a largura da célula
                 .SetPadding(5) // Ajuste o preenchimento da célula
                 .SetBorder(Border.NO_BORDER) // Remova a borda             
-                .Add(new Paragraph("1.88")
+                .Add(new Paragraph(genpdf.Col1Param1)
                 .SetFont(fonts)
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
@@ -817,7 +873,7 @@ namespace GerarPDF
                  .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("2.82"));
+               .Add(new Paragraph(genpdf.Col2Param1));
 
             Cell cells03 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -829,7 +885,7 @@ namespace GerarPDF
                  .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("3.76"));
+               .Add(new Paragraph(genpdf.Col3Param1));
 
             Cell cells04 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -841,7 +897,7 @@ namespace GerarPDF
                  .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("5.64"));
+               .Add(new Paragraph(genpdf.Col4Param1));
 
 
 
@@ -854,11 +910,11 @@ namespace GerarPDF
 
             tables02.SetFixedPosition(2, 325, 310, 120);
 
-            tempDocument.Add(tables02);
+            document.Add(tables02);
 
 
 
-            Paragraph para3 = new Paragraph("Superfície de refrigerada (m 2)")
+            Paragraph para3 = new Paragraph(genpdf.Param2)
                 .SetMarginRight(0).SetPaddingRight(0)
                 .SetTextAlignment(TextAlignment.RIGHT)
                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -867,7 +923,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)                 
             .SetFixedPosition(2, 20, 300, 276);
-            tempDocument.Add(para3);
+            document.Add(para3);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -890,7 +946,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontColor(fontColor02)
-                .Add(new Paragraph("3.56"));
+                .Add(new Paragraph(genpdf.Col1Param2));
 
             Cell cells06 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -903,7 +959,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("5.33"));
+               .Add(new Paragraph(genpdf.Col2Param2));
 
             Cell cells07 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -916,7 +972,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("7.11"));
+               .Add(new Paragraph(genpdf.Col3Param2));
 
             Cell cells08 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -929,7 +985,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("10.67"));
+               .Add(new Paragraph(genpdf.Col4Param2));
 
 
 
@@ -942,10 +998,10 @@ namespace GerarPDF
 
             tables03.SetFixedPosition(2, 325, 296, 120);
 
-            tempDocument.Add(tables03);
+            document.Add(tables03);
 
 
-            Paragraph para4 = new Paragraph("Volume de exposição refrigerada (m3)")
+            Paragraph para4 = new Paragraph(genpdf.Param3)
                 .SetMarginRight(0).SetPaddingRight(0)
                 .SetTextAlignment(TextAlignment.RIGHT)
                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -954,7 +1010,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)                 
             .SetFixedPosition(2, 20, 285, 276);
-            tempDocument.Add(para4);
+            document.Add(para4);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -973,7 +1029,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontColor(fontColor02)
-                .Add(new Paragraph("282"));
+                .Add(new Paragraph(genpdf.Col1Param3));
 
             Cell cells10 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -985,7 +1041,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("1173"));
+               .Add(new Paragraph(genpdf.Col2Param3));
 
             Cell cells11 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -997,7 +1053,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("1564"));
+               .Add(new Paragraph(genpdf.Col3Param3));
 
             Cell cells12 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1009,7 +1065,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("2346"));
+               .Add(new Paragraph(genpdf.Col4Param3));
 
 
 
@@ -1022,10 +1078,10 @@ namespace GerarPDF
 
             tables04.SetFixedPosition(2, 325, 280, 120);
 
-            tempDocument.Add(tables04);
+            document.Add(tables04);
 
 
-            Paragraph para5 = new Paragraph("Comprimento total com laterais (mm)")
+            Paragraph para5 = new Paragraph(genpdf.Param4)
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.RIGHT)
                  .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -1034,7 +1090,7 @@ namespace GerarPDF
                   .SetMarginBottom(20)
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 266, 276);
-            tempDocument.Add(para5);
+            document.Add(para5);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1056,7 +1112,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontColor(fontColor02)
-                .Add(new Paragraph("3.56"));
+                .Add(new Paragraph(genpdf.Col1Param4));
 
             Cell cell12 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1069,7 +1125,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("5.33"));
+               .Add(new Paragraph(genpdf.Col2Param4));
 
             Cell cells13 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1082,7 +1138,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("7.11"));
+               .Add(new Paragraph(genpdf.Col3Param4));
 
             Cell cells14 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1095,7 +1151,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("10.67"));
+               .Add(new Paragraph(genpdf.Col4Param4));
 
 
 
@@ -1108,11 +1164,11 @@ namespace GerarPDF
 
             tables05.SetFixedPosition(2, 325, 265, 120);
 
-            tempDocument.Add(tables05);
+            document.Add(tables05);
 
 
 
-            Paragraph para6 = new Paragraph("Tensão/Frequência")
+            Paragraph para6 = new Paragraph(genpdf.Param5)
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.RIGHT)
                  .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -1121,7 +1177,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 242, 276);
-            tempDocument.Add(para6);
+            document.Add(para6);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1142,7 +1198,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontColor(fontColor02)
-                .Add(new Paragraph("230V / 50Hz "));
+                .Add(new Paragraph(genpdf.ColParam5));
 
 
             // Adicione as células à linha
@@ -1151,11 +1207,11 @@ namespace GerarPDF
 
             tables06.SetFixedPosition(2, 325, 240, 200);
 
-            tempDocument.Add(tables06);
+            document.Add(tables06);
 
 
 
-            Paragraph para7 = new Paragraph("Potência nominal (W)")
+            Paragraph para7 = new Paragraph(genpdf.Param6)
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.RIGHT)
                  .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -1164,7 +1220,7 @@ namespace GerarPDF
                   .SetMarginBottom(5)
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 228, 276);
-            tempDocument.Add(para7);
+            document.Add(para7);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1184,7 +1240,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontColor(fontColor02)
-                .Add(new Paragraph("370"));
+                .Add(new Paragraph(genpdf.Col1Param6));
 
             Cell cell17 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1196,7 +1252,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("440"));
+               .Add(new Paragraph(genpdf.Col2Param6));
 
             Cell cells18 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1208,7 +1264,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("710"));
+               .Add(new Paragraph(genpdf.Col3Param6));
 
             Cell cells19 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1220,7 +1276,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("740"));
+               .Add(new Paragraph(genpdf.Col4Param6));
 
 
 
@@ -1233,11 +1289,11 @@ namespace GerarPDF
 
             tables07.SetFixedPosition(2, 325, 225, 120);
              
-            tempDocument.Add(tables07);
+            document.Add(tables07);
 
 
 
-            Paragraph para8 = new Paragraph("Corrente nominal (A)")
+            Paragraph para8 = new Paragraph(genpdf.Param7)
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.RIGHT)
                  .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -1246,7 +1302,7 @@ namespace GerarPDF
                   .SetMarginBottom(5)
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 214, 276);
-            tempDocument.Add(para8);
+            document.Add(para8);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1267,7 +1323,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontColor(fontColor02)
-                .Add(new Paragraph("1.7"));
+                .Add(new Paragraph(genpdf.Col1Param7));
 
             Cell cell21 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1280,7 +1336,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("2.1"));
+               .Add(new Paragraph(genpdf.Col2Param7));
 
             Cell cells22 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1293,7 +1349,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("3.2"));
+               .Add(new Paragraph(genpdf.Col3Param7));
 
             Cell cells23 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1306,7 +1362,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("3.7"));
+               .Add(new Paragraph(genpdf.Col4Param7));
 
 
 
@@ -1319,11 +1375,11 @@ namespace GerarPDF
 
             tables08.SetFixedPosition(2, 325, 214, 120);
 
-            tempDocument.Add(tables08);
+            document.Add(tables08);
 
 
 
-            Paragraph para9 = new Paragraph("Iluminação (W)")
+            Paragraph para9 = new Paragraph(genpdf.Param8)
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.RIGHT)
                  .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -1332,7 +1388,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 197, 276);
-            tempDocument.Add(para9);
+            document.Add(para9);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1352,7 +1408,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontColor(fontColor02)
-                .Add(new Paragraph("1 x 19"));
+                .Add(new Paragraph(genpdf.Col1Param8));
 
             Cell cell25 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1364,7 +1420,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("1 x 22"));
+               .Add(new Paragraph(genpdf.Col2Param8));
 
             Cell cells26 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1376,7 +1432,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("2 x 19"));
+               .Add(new Paragraph(genpdf.Col3Param8));
 
             Cell cells27 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1388,7 +1444,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("3 x 19"));
+               .Add(new Paragraph(genpdf.Col4Param8));
 
 
 
@@ -1401,11 +1457,11 @@ namespace GerarPDF
 
             tables09.SetFixedPosition(2, 325, 197, 120);
 
-            tempDocument.Add(tables09);
+            document.Add(tables09);
 
 
 
-            Paragraph para10 = new Paragraph("Consumo anual de energia (KWh/a)*")
+            Paragraph para10 = new Paragraph(genpdf.Param9)
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.RIGHT)
                  .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -1414,7 +1470,7 @@ namespace GerarPDF
                   .SetMarginBottom(5) 
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 180, 276);
-            tempDocument.Add(para10);
+            document.Add(para10);
 
 
             //############# TABELA AO LADO DE CADA LABEL
@@ -1435,7 +1491,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontColor(fontColor02)
-                .Add(new Paragraph("2 874"));
+                .Add(new Paragraph(genpdf.Col1Param9));
 
             Cell cell30 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1448,7 +1504,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("3 553"));
+               .Add(new Paragraph(genpdf.Col2Param9));
 
             Cell cells31 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1461,7 +1517,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("5 084"));
+               .Add(new Paragraph(genpdf.Col3Param9));
 
             Cell cells32 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1474,7 +1530,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("5 794"));
+               .Add(new Paragraph(genpdf.Col4Param9));
 
 
 
@@ -1487,10 +1543,10 @@ namespace GerarPDF
 
             tables10.SetFixedPosition(2, 325, 180, 120);
 
-            tempDocument.Add(tables10);
+            document.Add(tables10);
 
 
-            Paragraph para11 = new Paragraph("Classe eficiência energética")
+            Paragraph para11 = new Paragraph(genpdf.Param10)
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.RIGHT)
                  .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -1499,13 +1555,13 @@ namespace GerarPDF
                   .SetMarginBottom(5)
                   .SetFont(font4)
             .SetFixedPosition(2, 20, 166, 276);
-            tempDocument.Add(para11);
+            document.Add(para11);
 
 
             Table tables012 = new Table(4);
 
             // Crie a imagem
-            ImageData imageData11 = ImageDataFactory.Create("https://mm.mafirol.info/Categories/Subfamilies/EnergyEfficiency/20220107172351808_f900b70d-817b-43aa-8b82-d9bb76a8606e.jpg");
+            ImageData imageData11 = ImageDataFactory.Create(genpdf.UrlImageEfficientEnergyParam10);
             Image image11 = new Image(imageData11);
             image11.ScaleToFit(30, 30); // Ajuste o tamanho da imagem conforme necessário
 
@@ -1522,11 +1578,11 @@ namespace GerarPDF
 
             tables012.SetFixedPosition(2, 322, 152, 276);
 
-            tempDocument.Add(tables012);
+            document.Add(tables012);
 
 
 
-            Paragraph para12 = new Paragraph("Resistência evaporação condensados (opcional)")
+            Paragraph para12 = new Paragraph(genpdf.Param11)
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.RIGHT)
                  .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -1535,9 +1591,9 @@ namespace GerarPDF
                  .SetMarginBottom(5) 
                  .SetFont(font4)
            .SetFixedPosition(2, 20, 135, 276);
-            tempDocument.Add(para12);
+            document.Add(para12);
 
-            Paragraph paraDetails12 = new Paragraph("*Para classe temperatura M1 (-1, +5ºC)")
+            Paragraph paraDetails12 = new Paragraph(genpdf.ParamTextUnder)
                  .SetMarginRight(0).SetPaddingRight(0)
                  .SetTextAlignment(TextAlignment.LEFT)
                  .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
@@ -1546,7 +1602,7 @@ namespace GerarPDF
                  .SetMarginBottom(5)
                  .SetFont(font4)
            .SetFixedPosition(2, 325, 125, 180);
-            tempDocument.Add(paraDetails12);
+            document.Add(paraDetails12);
 
             //############# TABELA AO LADO DE CADA LABEL
 
@@ -1566,7 +1622,7 @@ namespace GerarPDF
                 .SetFontSize(6)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontColor(fontColor02)
-                .Add(new Paragraph("1 x 270"));
+                .Add(new Paragraph(genpdf.Col1Param11));
 
             Cell cell38 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1579,7 +1635,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("2 x 270"));
+               .Add(new Paragraph(genpdf.Col2Param11));
 
             Cell cells39 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1592,7 +1648,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("2 x 270"));
+               .Add(new Paragraph(genpdf.Col3Param11));
 
             Cell cells40 = new Cell(1, 1)
                .SetHeight(9) // Ajuste a altura da célula
@@ -1605,7 +1661,7 @@ namespace GerarPDF
                .SetFontSize(6)
                .SetFontColor(fontColor02)
                .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("3 x 270"));
+               .Add(new Paragraph(genpdf.Col4Param11));
 
 
 
@@ -1618,7 +1674,7 @@ namespace GerarPDF
 
             tables11.SetFixedPosition(2, 325, 135, 120);
 
-            tempDocument.Add(tables11);
+            document.Add(tables11);
 
 
 
@@ -1629,7 +1685,7 @@ namespace GerarPDF
 
             PdfFont fontBold = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
 
-            Paragraph TitleFooter = new Paragraph("Condições de operação recomendadas:")
+            Paragraph TitleFooter = new Paragraph(genpdf.TitleFooter2)
              .SetFontSize(7)
              .SetFont(fontBold)
              .SetMarginLeft(38)
@@ -1638,7 +1694,7 @@ namespace GerarPDF
              .SetRelativePosition(60, 130, 40, 100)
              //.SetFontFamily() .SetTextAlignment(TextAlignment.CENTER)
              .SetFontColor(ColorConstants.BLACK);
-            tempDocument.Add(TitleFooter);
+            document.Add(TitleFooter);
 
             Paragraph mafirolCom = new Paragraph(".mafirol.com")
             .SetFontSize(8)
@@ -1649,10 +1705,9 @@ namespace GerarPDF
             .SetRelativePosition(158, 192, 40, 100)
             //.SetFontFamily() .SetTextAlignment(TextAlignment.CENTER)
             .SetFontColor(ColorConstants.GRAY);
-            tempDocument.Add(mafirolCom);
+            document.Add(mafirolCom);
 
-            Paragraph paragraphFooter3 = new Paragraph("Este equipamento foi projetado para operar" +
-                " num ambiente interior onde a temperatura e a humidade relativa não exceda 25ºC e 60%Hr (classe climática 3).\r\nNão instalar sob a luz solar direta ou sobre influência de corrente de ar.")
+            Paragraph paragraphFooter3 = new Paragraph(genpdf.SubTitleFooter2)
                .SetFontSize(7)
                //.SetMarginLeft(10)
                .SetHorizontalAlignment(HorizontalAlignment.CENTER)
@@ -1660,23 +1715,22 @@ namespace GerarPDF
                .SetTextAlignment(TextAlignment.CENTER)
                .SetFixedPosition(2, -150, 70, 900)
                .SetFontColor(ColorConstants.BLACK);
-            tempDocument.Add(paragraphFooter3);
+            document.Add(paragraphFooter3);
 
 
-            Paragraph paragraphFooter2 = new Paragraph("Especificações sujeitas a alterações sem aviso prévio. tempDocumento não contratual.")
+            Paragraph paragraphFooter2 = new Paragraph(genpdf.TextFooter2)
                .SetFontSize(7)
                .SetMarginLeft(38)
                .SetHorizontalAlignment(HorizontalAlignment.CENTER) //----------------------------------------------------------------------------------------------
                .SetWidth(UnitValue.CreatePercentValue(50))
                .SetFixedPosition(2, 175, 50, 900)
                .SetFontColor(ColorConstants.BLACK);
-            tempDocument.Add(paragraphFooter2);
+            document.Add(paragraphFooter2);
 
 
             //##################################### IMAGEM 1 FOOTERS ############################################################
-
-            string imagePath02 = "https://mm.mafirol.info/assinaturas/Mafirol_mir.png";
-            ImageData imageDatar02 = ImageDataFactory.Create(imagePath02);
+                        
+            ImageData imageDatar02 = ImageDataFactory.Create(imagePath);
             Image img02 = new Image(imageDatar02);
 
             img02.ScaleAbsolute(40, 40);  // ajuste esses valores conforme necessário
@@ -1684,13 +1738,12 @@ namespace GerarPDF
             //img02.SetRelativePosition(1, 580, 50, 100);
 
             Paragraph footer02 = new Paragraph().Add(img02).SetTextAlignment(TextAlignment.CENTER);
-            tempDocument.Add(footer02);
+            document.Add(footer02);
 
 
             //##################################### IMAGEM 2 FOOTERS ############################################################
-
-            string imagePath03 = "https://mm.mafirol.info/assinaturas/WWW.png";
-            ImageData imageDatar03 = ImageDataFactory.Create(imagePath03);
+                        
+            ImageData imageDatar03 = ImageDataFactory.Create(imagePath08);
             Image img03 = new Image(imageDatar03);
 
             img03.ScaleAbsolute(150, 90);  // ajuste esses valores conforme necessário
@@ -1698,37 +1751,11 @@ namespace GerarPDF
             //img02.SetRelativePosition(1, 580, 50, 100);
 
             Paragraph footer03 = new Paragraph().Add(img03).SetTextAlignment(TextAlignment.CENTER);
-            tempDocument.Add(footer03);
+            document.Add(footer03);
 
-            //####################################### FIM FOOTER ####################################
+            document.Close();
 
-            // Feche o documento intermediário (isto vai 'liberar' o MemoryStream)
-            tempDocument.Close();
-
-            // Crie o documento final
-            MemoryStream finalMemoryStream = new MemoryStream();
-            PdfWriter finalWriter = new PdfWriter(finalMemoryStream);
-            PdfDocument finalPdf = new PdfDocument(finalWriter);
-            Document finalDocument = new Document(finalPdf);
-
-            // Crie um novo PdfReader a partir do MemoryStream intermediário
-            PdfReader reader = new PdfReader(new MemoryStream(tempMemoryStream.ToArray()));
-
-            // Crie um novo PdfDocument a partir do PdfReader
-            PdfDocument sourceDocument = new PdfDocument(reader);
-
-            // Copie as páginas do documento intermediário para o documento final
-            sourceDocument.CopyPagesTo(1, sourceDocument.GetNumberOfPages(), finalPdf);
-
-            // Feche o documento final
-            finalDocument.Close();
-
-            // Retorne o MemoryStream final
-            return finalMemoryStream;
-
-
-
-            //Process.Start(new ProcessStartInfo(pdfPath) { UseShellExecute = true }); //Abre o arquivo após ser criado
+            Process.Start(new ProcessStartInfo(pdfPath) { UseShellExecute = true });
         }
 
 
