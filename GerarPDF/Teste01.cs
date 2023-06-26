@@ -116,11 +116,11 @@ namespace GerarPDF
             //############################### BEGIN ##########################################
 
 
-            // Crie um novo objeto MemoryStream
-            MemoryStream ms = new MemoryStream();
+            // Crie um MemoryStream para o PdfWriter
+            MemoryStream tempMemoryStream = new MemoryStream();
 
             // Crie um documento intermediário
-            PdfWriter tempWriter = new PdfWriter(new MemoryStream());
+            PdfWriter tempWriter = new PdfWriter(tempMemoryStream);
             PdfDocument tempPdf = new PdfDocument(tempWriter);
             Document tempDocument = new Document(tempPdf);
 
@@ -1702,22 +1702,29 @@ namespace GerarPDF
 
             //####################################### FIM FOOTER ####################################
 
-            // Crie o documento final antes de fechar o intermediário
-            PdfWriter writer = new PdfWriter(ms);
-            PdfDocument pdf = new PdfDocument(writer);
+            // Feche o documento intermediário (isto vai 'liberar' o MemoryStream)
+            tempDocument.Close();
 
-            // Crie um novo documento para o PDF final
-            Document finalDocument = new Document(pdf);
+            // Crie o documento final
+            MemoryStream finalMemoryStream = new MemoryStream();
+            PdfWriter finalWriter = new PdfWriter(finalMemoryStream);
+            PdfDocument finalPdf = new PdfDocument(finalWriter);
+            Document finalDocument = new Document(finalPdf);
+
+            // Crie um novo PdfReader a partir do MemoryStream intermediário
+            PdfReader reader = new PdfReader(new MemoryStream(tempMemoryStream.ToArray()));
+
+            // Crie um novo PdfDocument a partir do PdfReader
+            PdfDocument sourceDocument = new PdfDocument(reader);
 
             // Copie as páginas do documento intermediário para o documento final
-            tempPdf.CopyPagesTo(1, tempPdf.GetNumberOfPages(), pdf);
+            sourceDocument.CopyPagesTo(1, sourceDocument.GetNumberOfPages(), finalPdf);
 
-            // Feche o documento intermediário e o final
-            tempDocument.Close();
+            // Feche o documento final
             finalDocument.Close();
 
-            // Retorne o MemoryStream
-            return ms;
+            // Retorne o MemoryStream final
+            return finalMemoryStream;
 
 
 
