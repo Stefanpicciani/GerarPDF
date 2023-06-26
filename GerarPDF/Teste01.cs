@@ -18,54 +18,91 @@ using System.Runtime.ConstrainedExecution;
 using iText.IO.Font.Otf;
 using System.Reflection.Emit;
 using System.Runtime.Intrinsics.X86;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GerarPDF
 {
     public class PDFModel
     {
-        public string Language { get; set; }
-        public string Param01 { get; set; }
-        public string Param02 { get; set; }
-        public string Param03 { get; set; }
-        public string Param04 { get; set; }
-        public string Param05 { get; set; }
-        public string Param06 { get; set; }
-        public string Param07 { get; set; }
-        public string Param08 { get; set; }
-        public string Param09 { get; set; }
-        public string Param10 { get; set; }
-        public string Param11 { get; set; }
-        public string Param12 { get; set; }
-        public string Param13 { get; set; }
-        public string Param14 { get; set; }
-        public string Param15 { get; set; }
-        public string Param16 { get; set; }
-        public string Param17 { get; set; }
-        public string Param18 { get; set; }
-        public string Param19 { get; set; }
-        public string Param20 { get; set; }
-        public string Param21 { get; set; }
-        public string Param22 { get; set; }
-        public string Param23 { get; set; }
+        // Page One
+        public string? Language { get; set; }
+        public string? Title { get; set; }
+        public string? Subtitle { get; set; }
+        public string? SubtitleText { get; set; }
+
+        public string? Title1 { get; set; }
+        public string? Paragraph1 { get; set; }
+
+        public string? Title2 { get; set; }
+        public string? Paragraph2 { get; set; }
+
+        public string? Title3 { get; set; }
+        public string? Paragraph3 { get; set; }
+
+        public string? Title4 { get; set; }
+        public string? Paragraph4 { get; set; }
+
+        public string? Title5 { get; set; }
+        public string? Paragraph5 { get; set; }
+
+        public string? ExteriorColor { get; set; }
+        public string? InteriorColor { get; set; }
+        public string? TextFooter1 { get; set; }
+
+
+        //Page Two
+        public string? Param08 { get; set; }
+        public string? Param09 { get; set; }
+        public string? Param10 { get; set; }
+        public string? Param11 { get; set; }
+        public string? Param12 { get; set; }
+        public string? Param13 { get; set; }
+        public string? Param14 { get; set; }
+        public string? Param15 { get; set; }
+        public string? Param16 { get; set; }
+        public string? Param17 { get; set; }
+        public string? Param18 { get; set; }
+        public string? Param19 { get; set; }
+        public string? Param20 { get; set; }
+        public string? Param21 { get; set; }
+        public string? Param22 { get; set; }
+        public string? Param23 { get; set; }
     }
   
 
     public class Teste01
     {
 
-        public void Teste()
+        public async Task <IActionResult> Teste()
         {
+            //#################### ELE ESCREVE NO DIRETÓRIO O PDF GERADO E ABRE APÓS ESCREVÊ-LO
 
             //string pdfPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "teste.pdf");
-            var name = Guid.NewGuid().ToString();
-            var pdfPath = $@"C:\\pdf\{name}_teste.pdf";
+            //var name = Guid.NewGuid().ToString();
+            //var pdfPath = $@"C:\\pdf\{name}_teste.pdf";
 
 
-            PdfWriter writer = new PdfWriter(pdfPath);
+            //PdfWriter writer = new PdfWriter(pdfPath);
+            //PdfDocument pdf = new PdfDocument(writer);
+            //Document document = new Document(pdf, PageSize.A4);
+            //document.SetMargins(5, 20, 0, 20);
+
+
+            //#################### ELE ESCREVE NO DIRETÓRIO O PDF GERADO E ABRE APÓS ESCREVÊ-LO / Ao final está adaptado para emitir em memóeria e comentado a criar em diretório
+
+            var stream = new MemoryStream();
+            
+            var nameResult = Guid.NewGuid().ToString();
+
+            var name = "InfoMafirol_product_" + nameResult.Substring(0, 2) + ".pdf";
+           
+
+            PdfWriter writer = new PdfWriter(stream);
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf, PageSize.A4);
             document.SetMargins(5, 20, 0, 20);
 
+              
             //-------------------------------- COLOR ------------------------------------
 
             //// Defina uma cor personalizada
@@ -1638,9 +1675,18 @@ namespace GerarPDF
             Paragraph footer03 = new Paragraph().Add(img03).SetTextAlignment(TextAlignment.CENTER);
             document.Add(footer03);
 
+
+
+
             document.Close();
 
-            Process.Start(new ProcessStartInfo(pdfPath) { UseShellExecute = true });
+            stream.Position = 0;
+            return new FileStreamResult(stream, "application/pdf")
+            {
+                FileDownloadName = name
+            };
+
+            //Process.Start(new ProcessStartInfo(pdfPath) { UseShellExecute = true }); //Abre o arquivo após ser criado
         }
 
 
