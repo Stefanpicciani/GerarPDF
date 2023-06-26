@@ -621,129 +621,157 @@ namespace GerarPDF
             //        break;
             //}
 
+            
+
             Paragraph para1 = new Paragraph("MODELO")
-                   .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                   .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                   .SetMarginBottom(5) // Espaço entre as labels
+                .SetMarginRight(0).SetPaddingRight(0).SetMarginBottom(2)
+                .SetTextAlignment(TextAlignment.RIGHT)
+                .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                   .SetFontSize(11)
+                   .SetMarginLeft(40) 
+                   .SetMarginBottom(5) 
                    .SetFont(font4)
                    .SetFontColor(customColor1)
-             .SetFixedPosition(2, 240, 330, 900);
+             .SetFixedPosition(2, 20, 330, 276);
             document.Add(para1);
 
+            // Crie uma nova tabela com 4 colunas
+            Table tables01 = new Table(4);
+
+            // Adicione as células à linha
+            tables01.AddCell(new Cell().Add(new Paragraph("Cell 1")));
+            tables01.AddCell(new Cell().Add(new Paragraph("Cell 2")));
+            tables01.AddCell(new Cell().Add(new Paragraph("Cell 3")));
+            tables01.AddCell(new Cell().Add(new Paragraph("Cell 4")));
+
+            tables01.SetFixedPosition(2, 350, 330, 170);
+
+            // Adicione a tabela ao documento
+            document.Add(tables01);
+
+
             Paragraph para2 = new Paragraph("Área total de exposição (TDA) (m2)")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
-                  .SetFont(font4)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 100, 315, 900);
+                .SetMarginRight(0).SetPaddingRight(0)
+                .SetTextAlignment(TextAlignment.RIGHT)
+                .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(8) 
+                  .SetMarginLeft(40) 
+                  .SetMarginBottom(5) 
+                  .SetFont(font4)                 
+            .SetFixedPosition(2, 20, 315, 276);
             document.Add(para2);
-            Paragraph para3 = new Paragraph("Superfície de carhrhrhrthga refrigerada (m 2)")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
-                  .SetFont(font4)
-                  //.SetTextAlignment(TextAlignment.RIGHT)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 100, 300, 900);
+
+            Paragraph para3 = new Paragraph("Superfície de refrigerada (m 2)")
+                .SetMarginRight(0).SetPaddingRight(0)
+                .SetTextAlignment(TextAlignment.RIGHT)
+                .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(8)
+                  .SetMarginLeft(40) 
+                  .SetMarginBottom(5) 
+                  .SetFont(font4)                 
+            .SetFixedPosition(2, 20, 300, 276);
             document.Add(para3);
+
             Paragraph para4 = new Paragraph("Volume de exposição refrigerada (m3)")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
-                  .SetFont(font4)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 240, 285, 900);
+                .SetMarginRight(0).SetPaddingRight(0)
+                .SetTextAlignment(TextAlignment.RIGHT)
+                .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(8) 
+                  .SetMarginLeft(40) 
+                  .SetMarginBottom(5) 
+                  .SetFont(font4)                 
+            .SetFixedPosition(2, 20, 285, 276);
             document.Add(para4);
+
             Paragraph para5 = new Paragraph("Comprimento total com laterais (mm)")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
+                 .SetMarginRight(0).SetPaddingRight(0)
+                 .SetTextAlignment(TextAlignment.RIGHT)
+                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(8) 
+                  .SetMarginLeft(40) 
+                  .SetMarginBottom(20)
                   .SetFont(font4)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 240, 270, 900);
+            .SetFixedPosition(2, 20, 270, 276);
             document.Add(para5);
+
             Paragraph para6 = new Paragraph("Tensão/Frequência")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
+                 .SetMarginRight(0).SetPaddingRight(0)
+                 .SetTextAlignment(TextAlignment.RIGHT)
+                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(9) 
+                  .SetMarginLeft(40)
+                  .SetMarginBottom(5) 
                   .SetFont(font4)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 240, 255, 900);
+            .SetFixedPosition(2, 20, 250, 276);
             document.Add(para6);
+
             Paragraph para7 = new Paragraph("Potência nominal (W)")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
+                 .SetMarginRight(0).SetPaddingRight(0)
+                 .SetTextAlignment(TextAlignment.RIGHT)
+                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(9) 
+                  .SetMarginLeft(40) 
+                  .SetMarginBottom(5)
                   .SetFont(font4)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 240, 240, 900);
+            .SetFixedPosition(2, 20, 235, 276);
             document.Add(para7);
+
             Paragraph para8 = new Paragraph("Corrente nominal (A)")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
+                 .SetMarginRight(0).SetPaddingRight(0)
+                 .SetTextAlignment(TextAlignment.RIGHT)
+                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(9)
+                  .SetMarginLeft(40) 
+                  .SetMarginBottom(5)
                   .SetFont(font4)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 240, 225, 900);
+            .SetFixedPosition(2, 20, 220, 276);
             document.Add(para8);
+
             Paragraph para9 = new Paragraph("Iluminação (W)")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
+                 .SetMarginRight(0).SetPaddingRight(0)
+                 .SetTextAlignment(TextAlignment.RIGHT)
+                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(9) 
+                  .SetMarginLeft(40) 
+                  .SetMarginBottom(5) 
                   .SetFont(font4)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 240, 210, 900);
+            .SetFixedPosition(2, 20, 205, 276);
             document.Add(para9);
+
             Paragraph para10 = new Paragraph("Consumo anual de energia (KWh/a)*")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
+                 .SetMarginRight(0).SetPaddingRight(0)
+                 .SetTextAlignment(TextAlignment.RIGHT)
+                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(9) 
+                  .SetMarginLeft(40) 
+                  .SetMarginBottom(5) 
                   .SetFont(font4)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 240, 195, 900);
+            .SetFixedPosition(2, 20, 190, 276);
             document.Add(para10);
+
             Paragraph para11 = new Paragraph("Classe eficiência energética")
-                  .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                  .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                  .SetMarginBottom(5) // Espaço entre as labels
+                 .SetMarginRight(0).SetPaddingRight(0)
+                 .SetTextAlignment(TextAlignment.RIGHT)
+                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                  .SetFontSize(9)
+                  .SetMarginLeft(40) 
+                  .SetMarginBottom(5)
                   .SetFont(font4)
-                  .SetFontColor(customColor1)
-            .SetFixedPosition(2, 240, 180, 900);
+            .SetFixedPosition(2, 20, 175, 276);
             document.Add(para11);
+
             Paragraph para12 = new Paragraph("Resistência evaporação condensados (opcional)")
-                 .SetFontSize(11) // Altere o tamanho da fonte conforme necessário
-                 .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-                 .SetMarginBottom(5) // Espaço entre as labels
+                 .SetMarginRight(0).SetPaddingRight(0)
+                 .SetTextAlignment(TextAlignment.RIGHT)
+                 .SetHorizontalAlignment(HorizontalAlignment.RIGHT)
+                 .SetFontSize(9) 
+                 .SetMarginLeft(40) 
+                 .SetMarginBottom(5) 
                  .SetFont(font4)
-                 .SetFontColor(customColor1)
-           .SetFixedPosition(2, 240, 165, 900);
+           .SetFixedPosition(2, 20, 155, 276);
             document.Add(para12);
-            //List<string> labels = new List<string>()
-            //{
-            //    "MODELO",
-            //    "Área total de exposição (TDA) (m2)",
-            //    "Superfície de carga refrigerada (m 2)",
-            //    "Volume de exposição refrigerada (m3)",
-            //    "Comprimento total com laterais (mm)",
-            //    "Tensão/Frequência",
-            //    "Potência nominal (W)",
-            //    "Corrente nominal (A)",
-            //    "Iluminação (W)",
-            //    "Consumo anual de energia (KWh/a)*",
-            //    "Classe eficiência energética",
-            //    "Resistência evaporação condensados (opcional)"
-            //};
 
-            //foreach (string label in labels)
-            //{
-            //    Paragraph para = new Paragraph(label)
-            //        .SetFontSize(6) // Altere o tamanho da fonte conforme necessário
-            //        .SetMarginLeft(40) // Ajuste a margem à esquerda conforme necessário
-            //        .SetMarginBottom(5); // Espaço entre as labels
-
-            //    document.Add(para);
-            //}
+            
 
 
 
